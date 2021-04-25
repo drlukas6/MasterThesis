@@ -3,5 +3,5 @@
 *.log
 *.toc
 
-# PDF output - usually a bad idea to keep this in Git
-*.pdf
+# Only pdf output is ignored, other sources are allowed
+diplomski.pdf
