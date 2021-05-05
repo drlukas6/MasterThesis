@@ -1,9 +1,18 @@
-\begin{thebibliography}{2}
+\begin{thebibliography}{3}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Harding et~al.(2013)Harding, Leitner, i
+  Schmidhuber]{cgp_image_processing}
+Simon Harding, Juxi Leitner, i Jürgen Schmidhuber.
+\newblock \emph{Cartesian Genetic Programming for Image Processing (CGP-IP)},
+  stranice 31--44.
+\newblock 03 2013.
+\newblock ISBN 978-1-4614-6845-5.
+\newblock \doi{10.1007/978-1-4614-6846-2_3}.
 
 \bibitem[Manning et~al.(2013)Manning, Sleator, i
   Walsh]{naturally_selecting_algorithms}

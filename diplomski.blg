@@ -3,44 +3,46 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: diplomski.aux
 The style file: fer.bst
 Database file #1: literatura.bib
-You've used 2 entries,
+Warning--empty publisher in cgp_image_processing
+You've used 3 entries,
             2773 wiz_defined-function locations,
-            615 strings with 5446 characters,
-and the built_in function-call counts, 1244 in all, are:
-= -- 114
-> -- 74
-< -- 1
-+ -- 24
-- -- 22
-* -- 110
-:= -- 197
-add.period$ -- 11
-call.type$ -- 2
-change.case$ -- 12
-chr.to.int$ -- 2
-cite$ -- 4
-duplicate$ -- 52
-empty$ -- 92
-format.name$ -- 24
-if$ -- 262
+            622 strings with 5633 characters,
+and the built_in function-call counts, 1821 in all, are:
+= -- 165
+> -- 104
+< -- 2
++ -- 34
+- -- 31
+* -- 159
+:= -- 281
+add.period$ -- 16
+call.type$ -- 3
+change.case$ -- 17
+chr.to.int$ -- 3
+cite$ -- 7
+duplicate$ -- 81
+empty$ -- 138
+format.name$ -- 34
+if$ -- 390
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 2
-newline$ -- 22
-num.names$ -- 10
-pop$ -- 20
+missing$ -- 4
+newline$ -- 29
+num.names$ -- 14
+pop$ -- 37
 preamble$ -- 1
-purify$ -- 10
+purify$ -- 15
 quote$ -- 0
-skip$ -- 39
+skip$ -- 59
 stack$ -- 0
-substring$ -- 49
-swap$ -- 9
-text.length$ -- 1
+substring$ -- 71
+swap$ -- 18
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 22
-warning$ -- 0
-while$ -- 11
+type$ -- 28
+warning$ -- 1
+while$ -- 16
 width$ -- 0
-write$ -- 43
+write$ -- 59
+(There was 1 warning)
