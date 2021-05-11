@@ -1,4 +1,4 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{4}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -32,5 +32,10 @@ Lino Rodriguez-Coayahuitl, Alicia Morales-Reyes, i Hugo~Jair Escalante.
   urednici, \emph{Pattern Recognition}, stranice 47--57, Cham, 2019. Springer
   International Publishing.
 \newblock ISBN 978-3-030-21077-9.
+
+\bibitem[Wong(2015)]{wong2015evolutionary}
+Ka-Chun Wong.
+\newblock Evolutionary algorithms: Concepts, designs, and applications in
+  bioinformatics: Evolutionary algorithms for bioinformatics, 2015.
 
 \end{thebibliography}
