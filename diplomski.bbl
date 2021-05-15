@@ -1,9 +1,17 @@
-\begin{thebibliography}{4}
+\begin{thebibliography}{9}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Brassard et~al.(1988)Brassard, BRASSARD, BRATLEY, i
+  Bratley]{brassard1988algorithmics}
+G.~Brassard, G.A. BRASSARD, P.A. BRATLEY, i P.~Bratley.
+\newblock \emph{Algorithmics: Theory and Practice}.
+\newblock Prentice Hall, 1988.
+\newblock ISBN 9780130232434.
+\newblock URL \url{https://books.google.hr/books?id=835QAAAAMAAJ}.
 
 \bibitem[Harding et~al.(2013)Harding, Leitner, i
   Schmidhuber]{cgp_image_processing}
@@ -23,6 +31,14 @@ Timmy Manning, Roy~D Sleator, i Paul Walsh.
 \newblock URL \url{https://doi.org/10.4161/bioe.23041}.
 \newblock PMID: 23222169.
 
+\bibitem[Meyer i Feng(1994)]{fuzzy_logic}
+L.~Meyer i Xin Feng.
+\newblock A fuzzy stop criterion for genetic algorithms using performance
+  estimation.
+\newblock U \emph{Proceedings of 1994 IEEE 3rd International Fuzzy Systems
+  Conference}, stranice 1990--1995 vol.3, 1994.
+\newblock \doi{10.1109/FUZZY.1994.343535}.
+
 \bibitem[Rodriguez-Coayahuitl et~al.(2019)Rodriguez-Coayahuitl, Morales-Reyes,
   i Escalante]{conv_gen_programming}
 Lino Rodriguez-Coayahuitl, Alicia Morales-Reyes, i Hugo~Jair Escalante.
@@ -33,9 +49,32 @@ Lino Rodriguez-Coayahuitl, Alicia Morales-Reyes, i Hugo~Jair Escalante.
   International Publishing.
 \newblock ISBN 978-3-030-21077-9.
 
+\bibitem[Safe et~al.(2004)Safe, Carballido, Ponzoni, i
+  Brignole]{ga_stopping_criteria}
+Martín Safe, Jessica Carballido, Ignacio Ponzoni, i Nélida Brignole.
+\newblock On stopping criteria for genetic algorithms.
+\newblock svezak 3171, stranice 405--413, 09 2004.
+\newblock ISBN 978-3-540-23237-7.
+\newblock \doi{10.1007/978-3-540-28645-5_41}.
+
+\bibitem[Singh i Sharma(2014)]{elitism}
+Vinay Singh i Vidushi Sharma.
+\newblock Elitist genetic algorithm based energy balanced routing strategy to
+  prolong lifetime of wireless sensor networks.
+\newblock \emph{Chinese Journal of Engineering}, 2014:\penalty0 1--6, 03 2014.
+\newblock \doi{10.1155/2014/437625}.
+
 \bibitem[Wong(2015)]{wong2015evolutionary}
 Ka-Chun Wong.
 \newblock Evolutionary algorithms: Concepts, designs, and applications in
   bioinformatics: Evolutionary algorithms for bioinformatics, 2015.
+
+\bibitem[Xu i Goodacre(2018)]{datasets}
+Yun Xu i Royston Goodacre.
+\newblock On splitting training and validation set: A comparative study of
+  cross-validation, bootstrap and systematic sampling for estimating the
+  generalization performance of supervised learning.
+\newblock \emph{Journal of Analysis and Testing}, 2, 10 2018.
+\newblock \doi{10.1007/s41664-018-0068-2}.
 
 \end{thebibliography}
