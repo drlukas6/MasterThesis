@@ -247,6 +247,8 @@ INPUT ./Assets/Illustrations/overtraining.png
 INPUT ./Assets/Illustrations/overtraining.png
 INPUT Chapters/cartesian.tex
 INPUT Chapters/cartesian.tex
+INPUT Chapters/convolution.tex
+INPUT Chapters/convolution.tex
 INPUT diplomski.bbl
 INPUT diplomski.bbl
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/courier/pcrr8t.tfm
