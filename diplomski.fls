@@ -247,6 +247,12 @@ INPUT ./Assets/Illustrations/overtraining.png
 INPUT ./Assets/Illustrations/overtraining.png
 INPUT Chapters/cartesian.tex
 INPUT Chapters/cartesian.tex
+INPUT Assets/Illustrations/genotype.png
+INPUT ./Assets/Illustrations/genotype.png
+INPUT ./Assets/Illustrations/genotype.png
+INPUT Assets/Illustrations/inactive_nodes.png
+INPUT ./Assets/Illustrations/inactive_nodes.png
+INPUT ./Assets/Illustrations/inactive_nodes.png
 INPUT Chapters/convolution.tex
 INPUT Chapters/convolution.tex
 INPUT diplomski.bbl

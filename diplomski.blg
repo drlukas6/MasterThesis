@@ -4,46 +4,48 @@ The top-level auxiliary file: diplomski.aux
 The style file: fer.bst
 Database file #1: literatura.bib
 Warning--empty publisher in cgp_image_processing
+Warning--empty publisher in cgp
+Warning--empty publisher in conv_gp
 Warning--empty booktitle in ga_stopping_criteria
-You've used 9 entries,
+You've used 11 entries,
             2773 wiz_defined-function locations,
-            664 strings with 6935 characters,
-and the built_in function-call counts, 4754 in all, are:
-= -- 434
-> -- 255
-< -- 9
-+ -- 85
-- -- 76
-* -- 378
-:= -- 714
-add.period$ -- 40
-call.type$ -- 9
-change.case$ -- 49
-chr.to.int$ -- 9
-cite$ -- 20
-duplicate$ -- 222
-empty$ -- 382
-format.name$ -- 91
-if$ -- 1032
-int.to.chr$ -- 1
+            678 strings with 7118 characters,
+and the built_in function-call counts, 5808 in all, are:
+= -- 529
+> -- 295
+< -- 13
++ -- 100
+- -- 88
+* -- 464
+:= -- 865
+add.period$ -- 50
+call.type$ -- 11
+change.case$ -- 57
+chr.to.int$ -- 10
+cite$ -- 26
+duplicate$ -- 279
+empty$ -- 473
+format.name$ -- 105
+if$ -- 1268
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 10
-newline$ -- 65
-num.names$ -- 38
-pop$ -- 106
+missing$ -- 14
+newline$ -- 79
+num.names$ -- 46
+pop$ -- 136
 preamble$ -- 1
-purify$ -- 42
+purify$ -- 50
 quote$ -- 0
-skip$ -- 180
+skip$ -- 216
 stack$ -- 0
-substring$ -- 174
-swap$ -- 49
-text.length$ -- 5
+substring$ -- 218
+swap$ -- 70
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 89
-warning$ -- 2
-while$ -- 39
+type$ -- 101
+warning$ -- 4
+while$ -- 49
 width$ -- 0
-write$ -- 147
-(There were 2 warnings)
+write$ -- 180
+(There were 4 warnings)

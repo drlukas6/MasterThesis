@@ -1,4 +1,4 @@
-\begin{thebibliography}{9}
+\begin{thebibliography}{11}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -39,15 +39,30 @@ L.~Meyer i Xin Feng.
   Conference}, stranice 1990--1995 vol.3, 1994.
 \newblock \doi{10.1109/FUZZY.1994.343535}.
 
-\bibitem[Rodriguez-Coayahuitl et~al.(2019)Rodriguez-Coayahuitl, Morales-Reyes,
-  i Escalante]{conv_gen_programming}
+\bibitem[Miller(2011)]{cgp}
+Julian Miller.
+\newblock \emph{Cartesian Genetic Programming}, svezak~43, stranice 17--34.
+\newblock 09 2011.
+\newblock ISBN 978-3-642-17309-7.
+\newblock \doi{10.1007/978-3-642-17310-3_2}.
+
+\bibitem[Rodriguez-Coayahuitl et~al.(2019{\natexlab{a}})Rodriguez-Coayahuitl,
+  Morales-Reyes, i Escalante]{conv_gen_programming}
 Lino Rodriguez-Coayahuitl, Alicia Morales-Reyes, i Hugo~Jair Escalante.
 \newblock Convolutional genetic programming.
 \newblock U Jes{\'u}s~Ariel Carrasco-Ochoa, Jos{\'e}~Francisco
   Mart{\'i}nez-Trinidad, Jos{\'e}~Arturo Olvera-L{\'o}pez, i Joaqu{\'i}n Salas,
-  urednici, \emph{Pattern Recognition}, stranice 47--57, Cham, 2019. Springer
-  International Publishing.
+  urednici, \emph{Pattern Recognition}, stranice 47--57, Cham,
+  2019{\natexlab{a}}. Springer International Publishing.
 \newblock ISBN 978-3-030-21077-9.
+
+\bibitem[Rodriguez-Coayahuitl et~al.(2019{\natexlab{b}})Rodriguez-Coayahuitl,
+  Morales-Reyes, i Escalante]{conv_gp}
+Lino Rodriguez-Coayahuitl, Alicia Morales-Reyes, i Hugo~Jair Escalante.
+\newblock \emph{Convolutional Genetic Programming}, stranice 47--57.
+\newblock 01 2019{\natexlab{b}}.
+\newblock ISBN 978-3-030-21076-2.
+\newblock \doi{10.1007/978-3-030-21077-9_5}.
 
 \bibitem[Safe et~al.(2004)Safe, Carballido, Ponzoni, i
   Brignole]{ga_stopping_criteria}
