@@ -89,3 +89,60 @@ Koristeći predložene metode, za pokušaje izlučivanja $n$ značajki (\emph{en
 U slučaju korištenja CGP-a, dovoljna je samo jedna jedinka za sve značajke.
 
 \subsection{Evoluiranje}
+
+\subsubsection{Mutacija}
+Mutacija u CGP genotipu mijenja vrijednost odabranog gena u drugu moguću vrijednost (\cite{cgp}).
+Naglasak na moguću jer kao što je spomenuto, postoje funkcijski i vezni geni, svaki sa svojom domenom mogućih vrijednosti.
+Mutacija se ne mora izvršiti jednom.
+Stopa mutacije $\mu_r$ (\emph{eng. mutation rate}) zadana je od strane korisnika algoritma te uvjetuje pretragu prostora.
+Najčešće se izražava kao postotak gena koji se mogu mutirati.
+\cite{cgp} predlaže korištenje $1\%$ ili $0.01$ za jedinke s brojem čvorova $\leq 100$ za konzistentno dobre rezultate, što mogu i sam potvrditi u eksperimentima koji će biti navedeni u nastavku rada.
+Ilustracija \ref{fig:cgp_mutation} prikazuje utjecaj mutiranja jednog veznog gena u genotipu.
+\cite{cgp_experiment} pokazuje da u genotipima s $\approx 4000$ čvorova, postotak ne-aktivnih čvorova iznosi čak $95\%$.
+Taj podatak, spojen s predloženom stopom mutacije unosi problem redundantne mutacije.
+Reduntantna mutacija je primjena mutacije na neaktivni čvor jer bez obzira promjenili vezu ili funkciju ne utječe na izlaz a samim time ni na kvalitetu CGP-a.
+Iako \cite{cgp} adresira problem kao benefit jer nakon uspješnog mutiranja nakon više redundantnih nastaje višestruko mutirana jedinka, rezultati koje sam ja dobivao ne podupiru tu tvrdnju.
+Pokušavajući povećati efikasnost algoritma, u vlastitoj implementaciji sam uzimao u obzir aktivnost, odnosno ne-aktivnost čvora te sam iste nisam uzimao u obzir.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{Illustrations/cgp_mutation.png}
+	\caption{CGP fenotip prije i nakon mutacije. Aktivni, odnosno neaktivni čvorovi su jasno naznačeni kao i novo-nastala veza.}
+	\label{fig:cgp_mutation}
+\end{figure}
+
+\subsubsection{Križanje}
+Kao što je spomenuto, genotip je vektor cijelih brojeva fiksne duljine.
+Velika prednost toga je što je križanje iznimno lako za ostvariti.
+Za razliku od mutacije ne moramo paziti na domene pojedinih gena.
+Operator križanja koji se koristi je križanje u $k$ točaka gdje je $k = 1$.
+Iako je lako izvodivo sa sobom nosi nedostatke.
+Rezultat križanja je spajanje dva podgrafa koja zajedno daju lošije rezultate nego dva originalna CGP-a zasebno.
+\cite{cgp_experiment} predstavlja nekolicinu radova s obečavajućim rezultatima koristeći eksperimentalne načine križanja no istraživanje i isprobavanje istih nije u sklopu ovog rada.
+
+\subsubsection{Algoritam}
+Algoritam evolucije koji predlaže \cite{cgp} je $1 + \lambda$.
+$\lambda$ može biti proizvoljna vrijednost koja predstavlja broj potomaka nastalih mutacijom.
+Spomenuti rad predlaže korištenje $\lambda = 4$.
+Rezultati eksperimenata koji će biti prikazani u nastavku potvrđuju tu tvrdnju iako sam mjestimično koristio $\lambda = 8$ kao što predlaže \cite{Sekanina2011}.
+Evolucija je detaljnije prikazana algoritmom \ref{alg:cgp_evolution}.
+
+\begin{algorithm}
+	\caption{Strategija $1 + \lambda$ za evoluciju CGP-a}
+	\label{alg:cgp_evolution}
+	\begin{algorithmic}
+		\FOR{i unutar $0 \leq i \leq \lambda$}
+			\STATE Stvori $CGP_i$
+		\ENDFOR
+		\STATE Od stvorenih CGP odaberi najbolji i definiraj ga kao roditelja
+		\WHILE{uvjet zaustavljanja nije ostvaren}
+			\FOR{i unutar $0 \leq i < \lambda$}
+				\STATE Mutiraj roditelja i stvori novi $CGP_i$
+			\ENDFOR
+			\STATE Evaluiraj nove potomke i odaberi najbolji
+			\IF{najbolji potomak pokazuje bolje ili jednako ponašanje nego roditelj}
+				\STATE Roditelj $\leftarrow$ Najbolji potomak
+			\ENDIF
+		\ENDWHILE
+	\end{algorithmic}
+\end{algorithm}

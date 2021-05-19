@@ -7,45 +7,46 @@ Warning--empty publisher in cgp_image_processing
 Warning--empty publisher in cgp
 Warning--empty publisher in conv_gp
 Warning--empty booktitle in ga_stopping_criteria
-You've used 11 entries,
+Warning--can't use both author and editor fields in Sekanina2011
+You've used 13 entries,
             2773 wiz_defined-function locations,
-            678 strings with 7118 characters,
-and the built_in function-call counts, 5808 in all, are:
-= -- 529
-> -- 295
-< -- 13
-+ -- 100
-- -- 88
-* -- 464
-:= -- 865
-add.period$ -- 50
-call.type$ -- 11
-change.case$ -- 57
-chr.to.int$ -- 10
-cite$ -- 26
-duplicate$ -- 279
-empty$ -- 473
-format.name$ -- 105
-if$ -- 1268
+            697 strings with 7604 characters,
+and the built_in function-call counts, 6978 in all, are:
+= -- 642
+> -- 355
+< -- 15
++ -- 120
+- -- 106
+* -- 563
+:= -- 1039
+add.period$ -- 60
+call.type$ -- 13
+change.case$ -- 68
+chr.to.int$ -- 12
+cite$ -- 31
+duplicate$ -- 330
+empty$ -- 563
+format.name$ -- 127
+if$ -- 1522
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 14
-newline$ -- 79
-num.names$ -- 46
-pop$ -- 136
+missing$ -- 17
+newline$ -- 93
+num.names$ -- 54
+pop$ -- 158
 preamble$ -- 1
-purify$ -- 50
+purify$ -- 60
 quote$ -- 0
-skip$ -- 216
+skip$ -- 256
 stack$ -- 0
-substring$ -- 218
-swap$ -- 70
-text.length$ -- 8
+substring$ -- 281
+swap$ -- 83
+text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 101
-warning$ -- 4
-while$ -- 49
+type$ -- 118
+warning$ -- 5
+while$ -- 59
 width$ -- 0
-write$ -- 180
-(There were 4 warnings)
+write$ -- 215
+(There were 5 warnings)

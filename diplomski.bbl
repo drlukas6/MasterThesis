@@ -1,4 +1,4 @@
-\begin{thebibliography}{11}
+\begin{thebibliography}{13}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -46,6 +46,14 @@ Julian Miller.
 \newblock ISBN 978-3-642-17309-7.
 \newblock \doi{10.1007/978-3-642-17310-3_2}.
 
+\bibitem[Miller i Smith(2006)]{cgp_experiment}
+Julian Miller i Stephen Smith.
+\newblock Redundancy and computational efficiency in cartesian genetic
+  programming.
+\newblock \emph{Evolutionary Computation, IEEE Transactions on}, 10:\penalty0
+  167 -- 174, 05 2006.
+\newblock \doi{10.1109/TEVC.2006.871253}.
+
 \bibitem[Rodriguez-Coayahuitl et~al.(2019{\natexlab{a}})Rodriguez-Coayahuitl,
   Morales-Reyes, i Escalante]{conv_gen_programming}
 Lino Rodriguez-Coayahuitl, Alicia Morales-Reyes, i Hugo~Jair Escalante.
@@ -71,6 +79,15 @@ Martín Safe, Jessica Carballido, Ignacio Ponzoni, i Nélida Brignole.
 \newblock svezak 3171, stranice 405--413, 09 2004.
 \newblock ISBN 978-3-540-23237-7.
 \newblock \doi{10.1007/978-3-540-28645-5_41}.
+
+\bibitem[Sekanina et~al.(2011)Sekanina, Harding, Banzhaf, i
+  Kowaliw]{Sekanina2011}
+Lukas Sekanina, Simon~L. Harding, Wolfgang Banzhaf, i Taras Kowaliw.
+\newblock \emph{Image Processing and CGP}, stranice 181--215.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2011.
+\newblock ISBN 978-3-642-17310-3.
+\newblock \doi{10.1007/978-3-642-17310-3_6}.
+\newblock URL \url{https://doi.org/10.1007/978-3-642-17310-3_6}.
 
 \bibitem[Singh i Sharma(2014)]{elitism}
 Vinay Singh i Vidushi Sharma.
