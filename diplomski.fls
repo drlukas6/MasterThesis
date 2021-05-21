@@ -169,6 +169,8 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmb8t.vf
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT Chapters/uvod.tex
 INPUT Chapters/uvod.tex
 INPUT Assets/Illustrations/Genetic_Program_Tree.png
@@ -178,8 +180,6 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmr8t.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmb8t.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmb8t.vf
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmb8t.vf
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmr8t.vf
@@ -258,6 +258,15 @@ INPUT ./Assets/Illustrations/cgp_mutation.png
 INPUT ./Assets/Illustrations/cgp_mutation.png
 INPUT Chapters/convolution.tex
 INPUT Chapters/convolution.tex
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmbi8t.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmbi8t.vf
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmbi8r.tfm
+INPUT Assets/Illustrations/extend.png
+INPUT ./Assets/Illustrations/extend.png
+INPUT ./Assets/Illustrations/extend.png
+INPUT Assets/Illustrations/wrap.png
+INPUT ./Assets/Illustrations/wrap.png
+INPUT ./Assets/Illustrations/wrap.png
 INPUT diplomski.bbl
 INPUT diplomski.bbl
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/courier/pcrr8t.tfm

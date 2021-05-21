@@ -3,50 +3,57 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: diplomski.aux
 The style file: fer.bst
 Database file #1: literatura.bib
+Warning--entry type for "conv_pres" isn't style-file defined
+--line 199 of file literatura.bib
+Warning--entry type for "conv_wiki" isn't style-file defined
+--line 206 of file literatura.bib
+Warning--to sort, need author or key in conv_wiki
+Warning--empty year in conv_wiki
 Warning--empty publisher in cgp_image_processing
+Warning--empty year in conv_pres
 Warning--empty publisher in cgp
 Warning--empty publisher in conv_gp
 Warning--empty booktitle in ga_stopping_criteria
 Warning--can't use both author and editor fields in Sekanina2011
-You've used 13 entries,
+You've used 15 entries,
             2773 wiz_defined-function locations,
-            697 strings with 7604 characters,
-and the built_in function-call counts, 6978 in all, are:
-= -- 642
-> -- 355
-< -- 15
-+ -- 120
-- -- 106
-* -- 563
-:= -- 1039
-add.period$ -- 60
-call.type$ -- 13
-change.case$ -- 68
-chr.to.int$ -- 12
-cite$ -- 31
-duplicate$ -- 330
-empty$ -- 563
-format.name$ -- 127
-if$ -- 1522
+            706 strings with 7850 characters,
+and the built_in function-call counts, 7514 in all, are:
+= -- 690
+> -- 365
+< -- 16
++ -- 125
+- -- 109
+* -- 594
+:= -- 1102
+add.period$ -- 65
+call.type$ -- 15
+change.case$ -- 75
+chr.to.int$ -- 14
+cite$ -- 39
+duplicate$ -- 360
+empty$ -- 630
+format.name$ -- 131
+if$ -- 1644
 int.to.chr$ -- 2
 int.to.str$ -- 1
 missing$ -- 17
-newline$ -- 93
-num.names$ -- 54
-pop$ -- 158
+newline$ -- 102
+num.names$ -- 58
+pop$ -- 185
 preamble$ -- 1
-purify$ -- 60
+purify$ -- 65
 quote$ -- 0
-skip$ -- 256
+skip$ -- 284
 stack$ -- 0
-substring$ -- 281
-swap$ -- 83
+substring$ -- 286
+swap$ -- 85
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 118
-warning$ -- 5
-while$ -- 59
+type$ -- 140
+warning$ -- 8
+while$ -- 62
 width$ -- 0
-write$ -- 215
-(There were 5 warnings)
+write$ -- 235
+(There were 10 warnings)
