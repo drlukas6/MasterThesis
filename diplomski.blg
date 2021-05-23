@@ -10,50 +10,51 @@ Warning--entry type for "conv_wiki" isn't style-file defined
 Warning--to sort, need author or key in conv_wiki
 Warning--empty year in conv_wiki
 Warning--empty publisher in cgp_image_processing
+Warning--empty journal in jakobovic
 Warning--empty year in conv_pres
 Warning--empty publisher in cgp
 Warning--empty publisher in conv_gp
 Warning--empty booktitle in ga_stopping_criteria
 Warning--can't use both author and editor fields in Sekanina2011
-You've used 15 entries,
+You've used 16 entries,
             2773 wiz_defined-function locations,
-            706 strings with 7850 characters,
-and the built_in function-call counts, 7514 in all, are:
-= -- 690
-> -- 365
+            711 strings with 7994 characters,
+and the built_in function-call counts, 7978 in all, are:
+= -- 726
+> -- 404
 < -- 16
-+ -- 125
-- -- 109
-* -- 594
-:= -- 1102
-add.period$ -- 65
-call.type$ -- 15
-change.case$ -- 75
-chr.to.int$ -- 14
-cite$ -- 39
-duplicate$ -- 360
-empty$ -- 630
-format.name$ -- 131
-if$ -- 1644
++ -- 138
+- -- 121
+* -- 636
+:= -- 1177
+add.period$ -- 68
+call.type$ -- 16
+change.case$ -- 82
+chr.to.int$ -- 15
+cite$ -- 42
+duplicate$ -- 380
+empty$ -- 661
+format.name$ -- 144
+if$ -- 1736
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 17
-newline$ -- 102
-num.names$ -- 58
-pop$ -- 185
+missing$ -- 18
+newline$ -- 107
+num.names$ -- 62
+pop$ -- 201
 preamble$ -- 1
-purify$ -- 65
+purify$ -- 71
 quote$ -- 0
-skip$ -- 284
+skip$ -- 299
 stack$ -- 0
-substring$ -- 286
-swap$ -- 85
+substring$ -- 288
+swap$ -- 86
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 140
-warning$ -- 8
-while$ -- 62
+type$ -- 151
+warning$ -- 9
+while$ -- 65
 width$ -- 0
-write$ -- 235
-(There were 10 warnings)
+write$ -- 246
+(There were 11 warnings)
