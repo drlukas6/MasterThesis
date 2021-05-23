@@ -267,6 +267,8 @@ INPUT ./Assets/Illustrations/extend.png
 INPUT Assets/Illustrations/wrap.png
 INPUT ./Assets/Illustrations/wrap.png
 INPUT ./Assets/Illustrations/wrap.png
+INPUT Chapters/Experiments/salt_pepper.tex
+INPUT Chapters/Experiments/salt_pepper.tex
 INPUT diplomski.bbl
 INPUT diplomski.bbl
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/courier/pcrr8t.tfm
