@@ -12,7 +12,7 @@ Sintetički šum koji sam dodao vrste \emph{"Salt and pepper"} odnosno soli i pa
 Postotak slike na koji sam odlučio primjeniti šum je $5\%$, slično kao i \cite{cgp_image_processing} i \cite{Sekanina2011}.
 U nastavku rada također ću predstaviti rezultate na većem postotku šuma od $40\%$.
 
-Cilj eksperimenta je evoluirati filter $f(x)$ koristeći konvolucijske metode i CGP koji će od oštećene slike $D$ reproducirati novu $Y = f(D)$ što bližu neoštećenom originalu $I$.
+Cilj eksperimenta je evoluirati filter $f(x): [0, 255]^8 \rightarrow [0, 255]$ koristeći konvolucijske metode i CGP koji će od oštećene slike $D$ reproducirati novu $Y = f(D)$ što bližu neoštećenom originalu $I$.
 $$
 \min_{Y, i, j} |Y_{(i, j)} - I_{(i, j)}|
 $$
@@ -22,7 +22,6 @@ Problem koji se može javiti je da u promatranom susjedstvu također imamo vrije
 Navedeni problem je zanemaren te je CGP-u ostavljeno kao problem koji treba riješiti bez ljudskog znanja.
 
 Jezgra $\omega$ koju sam odlučio koristiti je veličine $3 \times 3$ koja promatra $Moore$-ovo susjedstvo (\cite{jakobovic}).
-
 \[
 	\omega_{(i, j)}
 	=
@@ -42,3 +41,111 @@ Detaljniji prikaz djelovanja i rezultata mooreove jezgre vidljiv je na ilustraci
 	\label{fig:moore_example}
 \end{figure}
 
+Za rješavanje problema potrebno je definirati prikladne uvjete zaustavljanja.
+Kondicijska funkcija koju sam odabrao je temeljena na $L1$ pogrešci, odnosno
+\begin{gather*}
+err = \sum_{i=1}^{n} |y_{cgp} - y_{skup\ podataka}| \\
+kondicija = \frac{1}{err}
+\end{gather*}
+gdje je $y_{cgp}$ vrijednost koju računa CGP a $y_{skup\ podataka}$ vrijednost koju želimo predvidjeti i biti joj što bliže.
+Jezgrom konvolucije prolaziti će se cijelom slikom čitajući vrijednosti osam susjeda pravilom opisanim gore pretvarajući na kraju očitanu matricu u vektor.
+Vektor se predaje CGP jedinki koja na temelju ulaza i operacija koje se izvode u skrivenim slojevima računa izlaz.
+Konačno, ideja je minimizirati $L1$ pogrešku $err$ odnosno dobiti jedinku s najvećom kondicijom.
+
+\subsubsection{Postavke}
+Početne slike su u punoj veličini $256 \times 256$.
+Na slike je programski dodan nasumičan šum na $5\%$ vrijednosti.
+Zbog polinomijalnog rasta broja vrijednosti s rastom slike promatrani su podskupovi veličine $30 \times 30$.
+Time nastaje skup podataka od $900$ vrijednosti.
+Fotografije \ref{fig:sp_samples} prikazuju slike koje su se koristile u pojedinim fazama.
+
+Svaki eksperiment bio je ponovljen 30 puta.
+Odabrani algoritam je $1 + \lambda$, $\lambda = 4$.
+Koristi se samo operator mutacije koji mutira 1 aktivni gen po iteraciji.
+Dozvoljeno je najviše $500$ generacija odnosno $2000$ evaluacija.
+Također, u slučaju pada greške ispod $0.005$ se postupak zaustavlja.
+Tablica \ref{table:sp_function_set} prikazuje funkcije koje su se mogle koristiti u čvorovima.
+Funkcije su odabrane na način da izlaz uvijek odgovara skupu $[0, 255$] iako je dozvoljeno manje odnosno veće vrijednosti vratiti na najbližu dozvoljenu rubnu vrijednost koristeći jednakost $f(x) = max(min(f(x), 255), 0)$.
+
+\begin{table}
+	\centering
+	\begin{tabular}{||c c c||}
+		\hline
+		Adresa funkcija & Funkcija & Broj ulaza \\ [0.5ex]
+		\hline \hline
+		0 & $max$ & 8 \\
+		1 & $min$ & 8 \\ 
+		2 & $avg$ & 8 \\ 
+		3 & $mean$ & 8 \\ 
+		4 & $sum\ mod\ 256$ & 8 \\ 
+		5 & $\sqrt{sum}$ & 8 \\ 
+		6 & $max - min$ & 8 \\ [1ex]
+		\hline
+	\end{tabular}
+	\caption{Funkcije korištene u postupku micanja šuma sa slike}
+	\label{table:sp_function_set}
+\end{table}
+
+\begin{figure}
+	\caption{Fotografije na koje će biti primjenjen šum korištene u trening, validacijskoj i testnoj fazi}
+	\begin{subfigure}[t]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/lena.png}
+		\caption{Lena, fotografija na kojoj će se izvoditi trening i na temelju koje će se model korigirati}
+		\label{fig:sp_train_sample}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/cameraman.jpg}
+		\caption{Kamerman, fotografija na temelju koje će se računati validacijska kondicija CGP-a. Na temelju ove fotografije model se ne korigira}
+		\label{fig:sp_val_sample}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/trg.jpg}
+		\caption{Trg bana Jelačića, fotografija koja će se predati konačnom modelu u testnoj fazi imitirajući tako problem iz \emph{stvarnog svijeta}}
+		\label{fig:sp_test_sample}
+	\end{subfigure}
+	\label{fig:sp_samples}
+\end{figure}
+
+\subsubsection{Rezultati}
+Rezultati su prikazani na slici \ref{fig:sp_result_grid}.
+
+\begin{figure}
+	\caption{Fotografije iz trening, validacijske i testne faze prije i nakon micanja šuma CGP-om. Na dnu je također prikazana razlika dobivene slike i one željene.}
+	\begin{subfigure}[t]{0.32\textwidth}
+		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/noisy_lena.png}
+		\caption{Lena s $5\%$ šuma}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.32\textwidth}
+		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/cameraman_noisy.png}
+		\caption{Kamerman s $5\%$ šuma}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.32\textwidth}
+		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/trg_noisy.png}
+		\caption{Testna slika s $5\%$ šuma}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.32\textwidth}
+		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/sp_output.png}
+		\caption{Lena nakon prolaska kroz dobiveni filter}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.32\textwidth}
+		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/cameraman_out.png}
+		\caption{Kamerman nakon prolaska kroz dobiveni filter}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.32\textwidth}
+		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/trg_out.png}
+		\caption{Testna slika s maknutim šumom}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.32\textwidth}
+		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/sp_diff_train.png}
+		\caption{Razlika između dobivene i željene trening fotografije}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.32\textwidth}
+		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/sp_diff_val.png}
+		\caption{Razlika između dobivene i željene validacijske fotografije}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.32\textwidth}
+		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/sp_diff_test.png}
+		\caption{Razlika između dobivene i željene testne fotografije}
+	\end{subfigure}
+	\label{fig:sp_result_grid}
+\end{figure}
