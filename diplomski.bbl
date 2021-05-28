@@ -1,4 +1,4 @@
-\begin{thebibliography}{16}
+\begin{thebibliography}{17}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -36,6 +36,16 @@ Domagoj Jakobovic, Luca Manzoni, Luca Mariot, i Stjepan Picek.
 \newblock Image convolution.
 \newblock URL
   \url{http://web.pdx.edu/~jduh/courses/Archive/geog481w07/Students/Ludwig_ImageConvolution.pdf}.
+
+\bibitem[Liu et~al.(2019)Liu, Cheng, Hu, Bian, Zhang, Bai, i Tang]{Liu_2019}
+Yun Liu, Ming-Ming Cheng, Xiaowei Hu, Jia-Wang Bian, Le~Zhang, Xiang Bai, i
+  Jinhui Tang.
+\newblock Richer convolutional features for edge detection.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 41\penalty0 (8):\penalty0 1939–1946, Aug 2019.
+\newblock ISSN 1939-3539.
+\newblock \doi{10.1109/tpami.2018.2878849}.
+\newblock URL \url{http://dx.doi.org/10.1109/TPAMI.2018.2878849}.
 
 \bibitem[Manning et~al.(2013)Manning, Sleator, i
   Walsh]{naturally_selecting_algorithms}
