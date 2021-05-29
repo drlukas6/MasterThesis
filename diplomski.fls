@@ -416,6 +416,16 @@ INPUT ./Assets/Experiments/EdgeDetection/edge_detection_in_out_pair.png
 INPUT ./Assets/Experiments/EdgeDetection/edge_detection_in_out_pair.png
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
+INPUT Assets/Experiments/GrainRemoval/lena.png
+INPUT ./Assets/Experiments/GrainRemoval/lena.png
+INPUT Assets/Experiments/GrainRemoval/cameraman.jpg
+INPUT ./Assets/Experiments/GrainRemoval/cameraman.jpg
+INPUT Assets/Experiments/EdgeDetection/lena_edges.png
+INPUT ./Assets/Experiments/EdgeDetection/lena_edges.png
+INPUT ./Assets/Experiments/EdgeDetection/lena_edges.png
+INPUT Assets/Experiments/EdgeDetection/camerman_edges.png
+INPUT ./Assets/Experiments/EdgeDetection/camerman_edges.png
+INPUT ./Assets/Experiments/EdgeDetection/camerman_edges.png
 INPUT diplomski.bbl
 INPUT diplomski.bbl
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/courier/pcrr8t.tfm

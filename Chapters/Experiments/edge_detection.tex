@@ -108,3 +108,28 @@ Trening i validacijski skup je uzet sa iste fotografije Lene u dva odvojena pods
 \end{figure}
 
 \subsubsection{Rezultati}
+
+Rezultati detekcije ruba vidljivi su na slikama \ref{fig:edge_detection_results}. % TODO: Dodati graf!
+Pomalo neočekivano, rezultati izgledaju bolje na testnoj slici no to pridodajem značajkama fotografije pogodnijim za detekciju rubova.
+Zbog tog, vjerujem da je dosta težak zadatak za detekciju rubova fotografija s vidljivom kosom.
+Veliku ulogu je igrao i izbor podskupa iz kojeg se isčitavaju podaci za trening.
+Količina praznog dijela i vrsta vidljivih krivulja, zajedno s ispravnim odabirom
+
+\begin{figure}
+	\centering
+	\caption{Fotografije Lene i Kamermana prije i poslije detekcije rubova}
+	\begin{subfigure}[t]{0.48\textwidth}
+		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/lena.png}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.48\textwidth}
+		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/cameraman.jpg}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.48\textwidth}
+		\includegraphics[width=\textwidth]{Experiments/EdgeDetection/lena_edges.png}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.48\textwidth}
+		\includegraphics[width=\textwidth]{Experiments/EdgeDetection/camerman_edges.png}
+	\end{subfigure}
+	\label{fig:edge_detection_results}
+\end{figure}
+
