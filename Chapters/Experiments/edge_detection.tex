@@ -71,6 +71,8 @@ U slučaju veće razlike npr. predviđanje $1$ na željenu vrijednost $0$ unutar
 Tablica \ref{table:edge_detection_function_set} prikazuje funkcije koje su se mogle koristiti u čvorovima.
 Vrijednosti nisu morale biti unutar skupa $[0, 255]$ a na izlazu bi se prilagodile najbližoj rubnoj vrijednosti u slučaju da izlaz nije unutar skupa.
 Također ako se funkciji $3$, dijeljenju, prosljedi nepodržana vrijednost u nazivnik koristi se kao funkcija identiteta, odnosno, izlaz bude brojnik.
+Algoritam odabira je $1 + \lambda$ s $\lambda = 8$.
+Povećanje parametra $\lambda$ zahtjeva smanjenje najvećeg dozvoljenog broja iteracija koji je postavljen na $20$, puno manje nego pri micanju šuma gdje je definirano kao $500$.
 
 \begin{table}
 	\centering
@@ -108,16 +110,17 @@ Trening i validacijski skup je uzet sa iste fotografije Lene u dva odvojena pods
 \end{figure}
 
 \subsubsection{Rezultati}
-
 Rezultati detekcije ruba vidljivi su na slikama \ref{fig:edge_detection_results}. % TODO: Dodati graf!
 Pomalo neočekivano, rezultati izgledaju bolje na testnoj slici no to pridodajem značajkama fotografije pogodnijim za detekciju rubova.
-Zbog tog, vjerujem da je dosta težak zadatak za detekciju rubova fotografija s vidljivom kosom.
-Veliku ulogu je igrao i izbor podskupa iz kojeg se isčitavaju podaci za trening.
-Količina praznog dijela i vrsta vidljivih krivulja, zajedno s ispravnim odabirom
+Zbog tog, vjerujem da je dosta težak zadatak za detekciju rubova fotografija s vidljivom kosom ili bilo kakvim sitnim detaljima.
+Veliku ulogu igrao je i izbor podskupa iz kojeg se isčitavaju podaci za trening.
+Količina praznog dijela, vrsta i broj vidljivih krivulja, zajedno s ispravnim odabirom funkcije koju minimiziramo igra najveću ulogu.
+U usporedbi s problemom micanja šuma, detekcija rubova rješenje pronalazi iznimno brzo.
+Svako pokretanje koje je završilo s uspješnim pronalaskom rješenja konvergiralo je u $\leq 10$ iteracija.
 
 \begin{figure}
 	\centering
-	\caption{Fotografije Lene i Kamermana prije i poslije detekcije rubova}
+	\caption{Fotografije Lene i Kamermana prije i nakon detekcije rubova}
 	\begin{subfigure}[t]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/lena.png}
 	\end{subfigure}
@@ -133,3 +136,11 @@ Količina praznog dijela i vrsta vidljivih krivulja, zajedno s ispravnim odabiro
 	\label{fig:edge_detection_results}
 \end{figure}
 
+Graf \ref{fig:edge_detection_graph} pokazuje kretanje pogreške na trening i validacijskom skupu podataka.
+
+\begin{figure}
+	\centering
+	\caption{\emph{MSE} pogreška na trening i validacijskom skupu kroz iteracije algoritma}
+	\includegraphics[width=0.6\linewidth]{Experiments/EdgeDetection/edge_detection_graph.png}
+	\label{fig:edge_detection_graph}
+\end{figure}
