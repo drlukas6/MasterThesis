@@ -7,19 +7,16 @@ Nenadzirano učenje (\emph{eng. Unsupervised learning}) je privlačno zbog mogu�
 Generativni modeli osim rješavanja danog problema, tijekom tog procesa \emph{uče} o samim podacima.
 Pretpostavka je da podaci nisu u potpunosti nasumični već da dolaze u određenoj distribuciji.
 Model se toj distribuciji prilagođava te ima sposobnost generiranja sintetičkih podataka koji joj odgovaraju.
-Ovo poglavlje i rad fokusirati će se na model \texttt{Varijacijskog autoenkodera} (\emph{eng. Variational AutoEncoder}). \\
+Ovo poglavlje i rad fokusirati će se na model \texttt{Autoenkodera}. \\
 U nastavku se nalazi detaljnije opisan rad modela, implementacija, rezultati implementacije i poteškoće koje se javljaju.
 
-\section{Varijacijski autoenkoder}
-Varijacijski autoenkoder je generativni model učen nenadzirano.
-Uz skup podataka $\boldsymbol{X} \in \mathbb{R}^{m \times n}$ s $m$ vektora podataka skupa $\mathbb{R}^{n}$ pretpostavlja se da podaci odgovaraju distribuciji $p(\boldsymbol{x}|\boldsymbol{z})$.
-Parametar $\boldsymbol{z}$ odgovara uzorcima distribucije $p(\boldsymbol{z})$ iz \emph{latentnog prostora} (\emph{eng. latent space}) (\cite{ev_var_ae}).
-Latentni prostor je niže dimenzije od $\boldsymbol{x}$.
-Konačna distribucija $p(\boldsymbol{x})$ računa se kao
-$$p(x) = \int p(\boldsymbol{x} | \boldsymbol{z})p(\boldsymbol{z})d\boldsymbol{z}$$
-Iz danih podataka i uzorkovanja istih moguće je izračunati približne parametre distribucije što je i sama zadaća varijacijskog autoenkodera.
+\section{Autoenkoder}
+Autoenkoder je generativni model učen nenadzirano.
+Interesantan dio je "skriveni" sloj, najčešće manje dimenzije nego ulazni vektor, iz kojeg dekoder stvara izlaz.
+Skriveni sloj kompaktno sadrži podatke potrebne za uspješnu rekonstrukciju.
 Nenadzirano učenje vrši se direktnom usporedbom ulaza i dobivenog konačnog izlaza.
-Želja je što vjernije reproducirati ulazne vektore.
+Želja je što vjernije reproducirati ulazne vektore, naravno, uz izbjegavanje direktnog kopiranja.
+Direktno kopiranje izbjegava se automatski korištenjem skrivenog sloja
 
 \subsection{Arhitektura}
 
@@ -31,13 +28,14 @@ Nenadzirano učenje vrši se direktnom usporedbom ulaza i dobivenog konačnog iz
 \end{figure}
 
 Pojednostavljena arhitektura autoenkodera vidljiva je na slici \ref{fig:autoencoder_example}.
-Izlazni vektor $[y_1 \cdots y_n]$ treba biti što sličniji ulaznom $[x_1 \cdots x_n]$ bez direktnog kopiranja već uz distribuciju prametriziranu s $[f_1 \cdots f_n]$.
+Izlazni vektor $[y_1 \cdots y_n]$ treba biti što sličniji ulaznom $[x_1 \cdots x_n]$.
 
 \textbf{Enkoder} je prvi dio modela, između ulaza i skrivenog sloja iz ulaza stvara bitne značajke koje mu odgovaraju.
 \textbf{Dekoder} iz značajki nastalih od enkodera čini transformaciju do izlaza. \\
 Ključ je u srednjem, skrivenom sloju.
 Prisiljava model na učenje samo bitnih značajki, redukciju dimenzionalnosti i izbjegavanje direktnog kopiranja.
 Konačno, dekoder se može koristiti kao zasebni, generativni model koji iz danih parametara $[f_1 \cdots f_n]$ može generirati izlaz.
+
 \section{Kartezijsko genetsko programiranje za generiranje podataka, CGPAE}
 Genetsko programiranje je rijetko korišten alat za probleme koji se rješavaju nenadziranim učenjem.
 Po mojim znanjima, ne postoji rad koji koristi Kartezijsko genetsko programiranje za izvedbu autoenkodera.
