@@ -429,6 +429,8 @@ INPUT ./Assets/Experiments/EdgeDetection/camerman_edges.png
 INPUT Assets/Experiments/EdgeDetection/edge_detection_graph.png
 INPUT ./Assets/Experiments/EdgeDetection/edge_detection_graph.png
 INPUT ./Assets/Experiments/EdgeDetection/edge_detection_graph.png
+INPUT Chapters/data_gen.tex
+INPUT Chapters/data_gen.tex
 INPUT diplomski.bbl
 INPUT diplomski.bbl
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/courier/pcrr8t.tfm
