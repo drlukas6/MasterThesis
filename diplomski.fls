@@ -462,6 +462,10 @@ INPUT Chapters/conclusion.tex
 INPUT Chapters/conclusion.tex
 INPUT diplomski.bbl
 INPUT diplomski.bbl
+INPUT Chapters/abstract_hr.tex
+INPUT Chapters/abstract_hr.tex
+INPUT Chapters/abstract_eng.tex
+INPUT Chapters/abstract_eng.tex
 INPUT diplomski.aux
 INPUT ./diplomski.out
 INPUT ./diplomski.out

@@ -1,23 +1,21 @@
 Ovaj rad bavio se mogućnostima i kvalitetom obrade slike Kartezijskim genetskim programiranjem (CGP).
-U početku bavi se generalno genetskim programiranjem (GP), napredujući u preciznije teme.
+Početak rada bavi se generalno genetskim programiranjem (GP), napredujući u preciznije teme.
 Detaljno se prikazuje i objašnjava tehnika CGP-a, obrada slike i generiranje podataka zadane raspodjele.
 
 Kao metoda obrade slike koristi se konvolucija.
-Konvolucijske metode koriste se u kombinaciji sa CGP-om kroz dva primjera.
-Micanje šuma i detekciju rubova.
+Konvolucijske metode koriste se u kombinaciji sa CGP-om kroz dva primjera: micanje šuma i detekcija rubova.
 
 U nastavku dotiće se generiranje podataka zadane raspodjele gdje se CGP-om, točnije, arhitekturom \emph{CGPAE} oponašao rad autoenkodera.
 
-Konvolucijske metode pokazuju obećavajuće rezultate pri korištenju genetskog programiranja kao metode za stvaranje filtera za sliku.
-Posebice uz korištenje CGP-a i prednosti koje nosi kao što su više izlaza te ručno kontroliranje arhitekture i složenosti modela.
-Čak iz skup podataka koji bi se za \emph{neuronske mreže} smatrao manjim CGP uz provođenje algoritma na CPU jedinici relativno brzo konvergira rješenju.
+Konvolucijske metode pokazuju obečavajuće rezultate pri korištenju genetskog programiranja kao metode za stvaranje filtera za sliku.
+Korištenje CGP-a daje do izražaja njegove prednosti kao što su više izlaza te ručno kontroliranje arhitekture i složenosti modela.
 
 Nažalost, generiranje podataka ukazuje na određene nedostatke.
-Genetsko programiranje, time i CGP, ne iskorištava potencijal gradijentnog spusta te pokazuje slabe performanse pri problemima velikih dimenzija i u slučaju velikog broja hiperparametara koji se optimiziraju.
+Genetsko programiranje, time i CGP, ne iskorištava potencijal gradijentnog spusta te pokazuje slabe performanse u slučaju velikog broja hiperparametara koji se optimiziraju.
 Također, rad predlaže metodu serijskog spajanja više CGP jedinki i algoritam evolucije, no prednosti istog nisu jasno vidljive te je potrebno daljnje testiranje.
 Do sličnog zaključka dolazi i \cite{conv_gen_programming}.
 
 U budućem radu interesantno bi bilo istražiti potencijal prijenosnog učenja (\emph{eng. Transfer Learning}) s CGP-jedinkama.
-Na primjer, može li CGP koji je iznimno uspješan u micanju $5\%$ šuma s slike poslužiti kao početna točka za učenje CGP-a koji miče $\geq 50\%$ šuma.
+Na primjer, može li CGP koji je iznimno uspješan u micanju $5\%$ šuma sa slike poslužiti kao početna točka za učenje CGP-a koji miče $\geq 50\%$ šuma.
 
-Isto tako, smatram da je bitno povući jasnu liniju između problema koji su prikladni za rješavanje genetskim programiranjem i onih prikladnijih za druge tehnike kao što su na primjer neuronske mreže.
+Isto tako, smatram da je bitno povući jasnu liniju između problema koji su prikladni za rješavanje genetskim programiranjem i onih prikladnijih za druge tehnike, primjerice, neuronske mreže.
