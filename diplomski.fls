@@ -449,6 +449,17 @@ INPUT ./Assets/Illustrations/encoder_example.png
 INPUT Assets/Illustrations/cgp_encoder_example.png
 INPUT ./Assets/Illustrations/cgp_encoder_example.png
 INPUT ./Assets/Illustrations/cgp_encoder_example.png
+INPUT Assets/Illustrations/ae_dataset.png
+INPUT ./Assets/Illustrations/ae_dataset.png
+INPUT ./Assets/Illustrations/ae_dataset.png
+INPUT Assets/Illustrations/ae_result.png
+INPUT ./Assets/Illustrations/ae_result.png
+INPUT ./Assets/Illustrations/ae_result.png
+INPUT Assets/Illustrations/ae_lat_vec_boxplot.png
+INPUT ./Assets/Illustrations/ae_lat_vec_boxplot.png
+INPUT ./Assets/Illustrations/ae_lat_vec_boxplot.png
+INPUT Chapters/conclusion.tex
+INPUT Chapters/conclusion.tex
 INPUT diplomski.bbl
 INPUT diplomski.bbl
 INPUT diplomski.aux

@@ -10,7 +10,7 @@ Model se toj distribuciji prilagođava te ima sposobnost generiranja sintetički
 Ovo poglavlje i rad fokusirati će se na model \texttt{Varijacijskog autoenkodera} (\emph{eng. Variational AutoEncoder}). \\
 U nastavku se nalazi detaljnije opisan rad modela, implementacija, rezultati implementacije i poteškoće koje se javljaju.
 
-\subsection{Varijacijski autoenkoder}
+\section{Varijacijski autoenkoder}
 Varijacijski autoenkoder je generativni model učen nenadzirano.
 Uz skup podataka $\boldsymbol{X} \in \mathbb{R}^{m \times n}$ s $m$ vektora podataka skupa $\mathbb{R}^{n}$ pretpostavlja se da podaci odgovaraju distribuciji $p(\boldsymbol{x}|\boldsymbol{z})$.
 Parametar $\boldsymbol{z}$ odgovara uzorcima distribucije $p(\boldsymbol{z})$ iz \emph{latentnog prostora} (\emph{eng. latent space}) (\cite{ev_var_ae}).
@@ -21,7 +21,7 @@ Iz danih podataka i uzorkovanja istih moguće je izračunati približne parametr
 Nenadzirano učenje vrši se direktnom usporedbom ulaza i dobivenog konačnog izlaza.
 Želja je što vjernije reproducirati ulazne vektore.
 
-\subsubsection{Arhitektura}
+\subsection{Arhitektura}
 
 \begin{figure}[H]
 	\centering
@@ -38,7 +38,7 @@ Izlazni vektor $[y_1 \cdots y_n]$ treba biti što sličniji ulaznom $[x_1 \cdots
 Ključ je u srednjem, skrivenom sloju.
 Prisiljava model na učenje samo bitnih značajki, redukciju dimenzionalnosti i izbjegavanje direktnog kopiranja.
 Konačno, dekoder se može koristiti kao zasebni, generativni model koji iz danih parametara $[f_1 \cdots f_n]$ može generirati izlaz.
-\subsection{Kartezijsko genetsko programiranje za generiranje podataka, CGPAE}
+\section{Kartezijsko genetsko programiranje za generiranje podataka, CGPAE}
 Genetsko programiranje je rijetko korišten alat za probleme koji se rješavaju nenadziranim učenjem.
 Po mojim znanjima, ne postoji rad koji koristi Kartezijsko genetsko programiranje za izvedbu autoenkodera.
 \cite{why_ae_diff} koristi jednostavan linearni genetski program s više ulaza i izlaza (LGP) umjesto CGP-a.
@@ -52,7 +52,96 @@ S tim na umu, autoenkoder se čini kao moguć zadatak za riješiti.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{Illustrations/cgp_encoder_example.png}
-	\caption{Prikaz predložene arhitekture \emph{CGPAE}. Korištenje dva neovisna CGP elementa u seriji. Izlazi enkodera odgovaraju značajkama. Ulaz dekodera odgovara broju značajki a izlaz ulazu u enkoder. Preciznije, izlaz enkodera je ulaz u dekoder.}
+	\caption{Prikaz predložene arhitekture \emph{CGPAE}}
+	\label{fig:cgpae}
 \end{figure}
 
-\subsubsection{Algoritam}
+Slika \ref{fig:cgpae} prikazuje shematiku predložene arhitekture.
+Koriste se dva neovisna CGP-a spojena serijski.
+Prvi CGP, enkoder, za izlaz stvara vektor veličine po izboru koji sadrži značajke iz ulaza.
+Nastavlja se na drugi CGP, dekoder, koji iz vektora značajki stvara izlaz jednakih dimenzija kao ulaz u enkoder.
+Njegov izlaz treba biti što sličniji ili isti ulazu u enkoder.
+
+\subsection{Algoritam}
+Istovremeno učenje dva odvojena CGP-a predstavlja velik izazov zbog velikog broja parametara koji mogu poprimiti veliku količinu vrijednosti.
+Korištenje dva CGP-a može se izbjeći korištenjem jednog s postavljenim $l = 1$.
+Ograničenje koje time nastaje je ne-fleksibilnost parametra i postavljanje latentnog vektora značajki na dimenziju jednaku ulazu.
+Dva odvojena CGP-a osiguravaju fleksibilnost i dvije različite arhitekture.
+Algoritam koji sam koristio inspiriran je serijskom evolucijom koju koristi \cite{conv_gen_programming} gdje $n$ iteracija evoluira svaki sloj pojedinačno prije nego prijeđe na sljedeći.
+Algoritam \ref{alg:cgpae_evolution} prikazuje detaljnije provedene korake pri učenju CGPAE sustava.
+
+\begin{algorithm}
+	\caption{Algoritam evolucije CGPAE sustava}
+	\label{alg:cgpae_evolution}
+	\begin{algorithmic}
+		\STATE $n \leftarrow broj\ koraka\ prije\ promjene$
+		\STATE $cgp\_encoder = stvori\_encoder()$
+		\STATE $cgp\_decoder = stvori\_decoder()$
+		\STATE $trenirani\_cgp \leftarrow cgp\_encoder$
+		\WHILE{uvjet zaustavljanja nije ostvaren}
+			\STATE Evaluiraj sustav na skupu podataka
+			\STATE Primjeni $1+\lambda$ algoritam na $trenirani\_cgp$
+
+			\IF{napravili $n$ koraka}
+				\IF{$trenirani\_cgp = cgp\_encoder$}
+					\STATE $trenirani\_cgp = cgp\_decoder$
+				\ELSE
+					\STATE $trenirani\_cgp = cgp\_encoder$
+				\ENDIF
+			\ENDIF
+		\ENDWHILE
+	\end{algorithmic}
+\end{algorithm}
+
+\section{Eksperiment}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{Illustrations/ae_dataset.png}
+	\caption{Grafički prikaz jednostavnog skupa podataka korištenog za ispitivanje CGP-a kao autoenkodera}
+	\label{fig:ae_example}
+\end{figure}
+
+Za potrebe ispitivanja teze o uspješnosti korištenja CGP-a kao komponente autoenkodera odlučio sam reproducirati slike veličine $3 \times 3$ vidljive na \ref{fig:ae_example}.
+Prilikom ulaska slike u enkoder pretvara se u vektor $v$ gdje je $|v| = 9$.
+Zadaća autoenkodera je stvoriti vektor značajki $f$ s $4$ komponente ($|f| = 4$).
+Dekoder iz vektora značajki treba reproducirati dani ulaz.
+
+Nažalost, slično kao i kod \cite{why_ae_diff} rezultati nisu obečavajući.
+Prikaz najboljih rezultata vidljiv je na slici \ref{fig:ae_results}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Illustrations/ae_result.png}
+	\caption{Primjer rezultata dobivenih CGPAE modelom. Uz dobivene slike prikazan je i vektor značajki izračunat od enkodera.}
+	\label{fig:ae_results}
+\end{figure}
+
+Korišteni parametri su sljedeći:
+\begin{itemize}
+	\item {najviše generacija $\leftarrow 1000$}
+	\item {$n = 8$ (Broj koraka između izmjene treniranog CGP-a)}
+	\item {Enkoder}
+		\subitem {$n_c, n_r = 10, 6$}
+		\subitem {$n_i, n_o = 9,4$}
+		\subitem {$l = 2$}
+		\subitem{$n_{func} = 20$ (Broj raspoloživih funkcija) } 
+	\item {Dekoder}
+		\subitem {$n_c, n_r = 10, 9$}
+		\subitem {$n_i, n_o = 4,9$}
+		\subitem {$l = 2$}
+		\subitem{$n_{func} = 20$}
+\end{itemize}
+Ideja je bila početi s jednostavnim skupom podataka (npr. kao na slici \ref{fig:ae_example}) te prelaziti na postupno složenije skupove podataka također korištene u \cite{why_ae_diff}.
+No, neuspjeh na jednostavnom skupu podataka doveo je do zaključka da bi složeniji skupovi podataka predstavljali još veći problem.
+Uz iste parametre također isproban je jednak skup podataka no s ulaznim veličinama $2 \times 2$, odnosno bez praznina između uglova.
+CGPAE u tom slučaju lako pronalazi rješenje.
+Graf \ref{fig:ae_boxplot} prikazuje ovisnost broja značajki očitanih od enkodera i pogreške.
+Zanimljivo je primjetiti kako broj značajki ne utječe puno na medijan no najmanji broj, u ovom slučaju $|f| = 2$ ima najmanju vrijednost za odskakajuću pogrešku.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{Illustrations/ae_lat_vec_boxplot.png}
+	\caption{Ovisnost broja značajki koje generira enkoder i pogreške tijekom 50 neovisnih pokretanja algoritma}
+	\label{fig:ae_boxplot}
+\end{figure}
