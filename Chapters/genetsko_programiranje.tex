@@ -1,5 +1,5 @@
 \section{Genetsko programiranje}
-\emph{Genetsko programiranje} (\emph{GP}) je evolucijski algoritam koji do rješenja dolazi iterativno mjenjajući populaciju sve dok uvjet zaustavljanja nije zadovoljen (\cite{conv_gen_programming}).
+\emph{Genetsko programiranje} (\emph{GP}) evolucijski je algoritam koji do rješenja dolazi iterativno mjenjajući populaciju sve dok uvjet zaustavljanja nije zadovoljen (\cite{conv_gen_programming}).
 
 Inspiraciju vuče iz prirode.
 Algoritam počinje s nasumično nastalom populacijom koja se poboljšava kroz ograničen broj generacija.
@@ -12,7 +12,7 @@ Ciklus se ponavlja sve dok jedna od dvije stvari nije zadovoljena:
 	\item{Dosegnut najveći broj iteracija ili evaluacija}
 	\item{Postignuta željena preciznost rješenja (npr. $greska \leq 10^{-3}$})
 \end{itemize}
-Na kraju postupka, dobiveni model osim što se može koristiti u željenu svrhu, lako se može izučiti i interpretirati, jer za razliku od neuronskih mreža, način na koji ulaz postaje izlaz jasno je čitljiv. \\
+Na kraju postupka, dobiveni model osim što se može koristiti u željenu svrhu, lako se može izučiti i interpretirati jer za razliku od neuronskih mreža, način na koji ulaz postaje izlaz jasno je čitljiv. \\
 Jednostavan primjer genetskog algoritma vidljiv je u pseudokodu ~\ref{alg:gp_example}
 
 \begin{algorithm}
@@ -35,17 +35,17 @@ Jednostavan primjer genetskog algoritma vidljiv je u pseudokodu ~\ref{alg:gp_exa
 
 \subsection{Jedinka populacije}
 Jedinka populacije u genetskom algoritmu predstavlja jedno moguće rješenje na problem koji smo postavili.
-Svaka jedinka je definirana s dvije stavke:
+Svaka jedinka definirana je s dvije stavke:
 \begin{itemize}
 	\item{Genotipom}
 	\item{Načinom mapiranja genotipa u \emph{fenotip}}
 \end{itemize}
-Na najnižoj razini, svaka jedinka je jedan genotip. 
-U praksi, genotip može biti prikazan na bilo koji način koji odgovara korisniku algoritma, no neke od najčešćih struktura su vektori brojeva, simbola ili bitova, fiksne ili varijabilne duljine, te stablaste strukture (\cite{naturally_selecting_algorithms}).
+Na najnižoj razini, svaka jedinka jedan je genotip. 
+U praksi, genotip može biti prikazan na bilo koji način koji odgovara korisniku algoritma, no neke od najčešćih struktura su vektori brojeva, simbola ili bitova, fiksne ili varijabilne duljine te stablaste strukture (\cite{naturally_selecting_algorithms}).
 Korisnik koji koristi \emph{genetski algoritam} (GA) za pronalazak rješenja mora također definirati mapiranje $genotip \rightarrow fenotip$.
 Genotipom možemo smatrati ono što koristi algoritam kako bi stvorio fenotip, dok je fenotip jedno od mogućih rješenja na problem koji rješavamo.
 Što to znači?
-Ukoliko je zadatak GA iz skupa točaka provesti simboličku regresiju $A\sin(Bx + C)$ gdje su $A$, $B$ i $C$ nepoznate varijable genotip bi se mogao prikazati kao vektor s broja s pomičnim zarezom.
+Ukoliko je zadatak GA iz skupa točaka provesti simboličku regresiju $A\sin(Bx + C)$ gdje su $A$, $B$ i $C$ nepoznate varijable, genotip bi se mogao prikazati kao vektor s broja s pomičnim zarezom.
 Dalje, pravilo mapiranja genotipa u fenotip bi moglo biti da element na prvom mjestu odgovara vrijednosti koju pridajemo varijabli $A$ i tako dalje za varijable $B$ i $C$ (~\ref{fig:genotype_phenotype_map}).
 Također, bitno je kvantificirati kvalitetu jedinke.
 Ta mjera najčešće se naziva kondicija (\emph{eng. fitness}).
@@ -76,13 +76,13 @@ Jedinka s najvećom kondicijom smatra se najkvalitetnijom i najboljim rješenjem
 \subsection{Genetski operatori}
 Genetski operatori pružaju osnovni mehanizam pretrage genetskog algoritma.
 Za zadatak imaju stvarati nova rješenja uz efektivnu pretragu prostora rješenja.
-Izvode se na primitivu jedinki, genotipu, te se nerjetko međusobno izvode u kombinaciji jer samostalno nisu uvijek efektivni.
-U nastavku su opisane 2 osnovne vrste genetskih operatora, križanje i mutacija.
+Izvode se na primitivu jedinki, genotipu te se nerjetko međusobno izvode u kombinaciji jer samostalno nisu uvijek efektivni.
+U nastavku su opisane dvije osnovne vrste genetskih operatora, križanje i mutacija.
 
 \subsubsection{Križanje}
 Operator križanja u genetskom algoritmu oponaša reprodukciju u biološkom svijetu.
 Od dvije jedinke stvara nove primjenjujući neko definirano pravilo kombinacije njihovih genotipa.
-Križanje nije trivijalno kao na prvi pogled, te je usko ovisno o izboru strukture podataka s kojom definiramo genotip (~\cite{wong2015evolutionary}). \\
+Križanje nije trivijalno kao na prvi pogled te je usko ovisno o izboru strukture podataka s kojom definiramo genotip (~\cite{wong2015evolutionary}). \\
 Na slici ~\ref{fig:crossover} prikazan je primjer jednog od operatora križanja koje ću detaljnije opisati u nastavku.
 
 \begin{figure}
@@ -92,11 +92,11 @@ Na slici ~\ref{fig:crossover} prikazan je primjer jednog od operatora križanja 
 \end{figure}
 
 \paragraph{Križanje u k točaka}
-se koristi tako da se odabere $k$ nasumičnih točaka koje služe kao granica između kojih se uzimaju dijelovi dva različita genotipa.
+koristi se tako da se odabere $k$ nasumičnih točaka koje služe kao granica između kojih se uzimaju dijelovi dva različita genotipa.
 Često se odabere $k = 1$ (primjer na slici ~\ref{fig:crossover}) zbog svoje jednostavnosti.
-Ono što se često zamjera križanju u jednoj točki je pristranost poziciji genotipa.
-To znači da će pri odabiru dva roditeljska genotipa $P_1$ i $P_2$ lijevi dio novonastalog genotipa uvijek pripasti pripadajućem dijelu $P_1$ a desni $P_2$.
-Rješenje na taj problem, osim odabira $k > 1$, je stvaranje dva potomka koja se zatim evaluiraju, nakon čega se potomak koji se pokaže boljim prenosi u sljedeću generaciju populacije (ilustracija ~\ref{fig:position_bias}).
+Ono što se često zamjera križanju u jednoj točki jest pristranost poziciji genotipa.
+To znači da će pri odabiru dva roditeljska genotipa $P_1$ i $P_2$ lijevi dio novonastalog genotipa uvijek pripasti pripadajućem dijelu $P_1$, a desni $P_2$.
+Rješenje tog problema, osim odabira $k > 1$, stvaranje je dva potomka koja se zatim evaluiraju, nakon čega se potomak koji se pokaže boljim prenosi u sljedeću generaciju populacije (ilustracija ~\ref{fig:position_bias}).
 
 \begin{figure}
 	\includegraphics[width=\linewidth]{Illustrations/position_bias.png}
@@ -105,7 +105,7 @@ Rješenje na taj problem, osim odabira $k > 1$, je stvaranje dva potomka koja se
 \end{figure}
 
 \paragraph{Ujednačeno križanje (\emph{eng. Uniform crossover})}
-tretira svaki gen u genotipu zasebno što osigurava da svaki roditeljski gen ima jednaku vjerojatnost da se prenese na novonastali genotip.
+tretira svaki gen u genotipu zasebno, što osigurava da svaki roditeljski gen ima jednaku vjerojatnost da se prenese na novonastali genotip.
 Postupak se može definirati kao:
 \[
 	O[n] = \left\{\begin{array}{lr}
@@ -123,19 +123,19 @@ Također, grafički prikazano na ilustraciji ~\ref{fig:uniform_crossover}.
 
 \subsubsection{Mutacija}
 Analogno istoimenoj pojavi u biološkom svijetu, mutacija unosi male i nasumične promjene u genotip.
-Primjena mutacije na genotip ne mora nužno promjeniti ni jedan gen, a može promjeniti i svaki.
-Šansa za mutaciju se zadaje od strane korisnika i ne treba biti prevelika jer, u tom slučaju algoritam se svodi na nasumičnu pretragu.
+Primjena mutacije na genotip ne mora nužno promijeniti niti jedan gen, a može promijeniti i svaki.
+Šansa za mutaciju zadaje se od strane korisnika i ne treba biti prevelika jer se u tom slučaju algoritam svodi na nasumičnu pretragu.
 U najviše slučajeva, vrijednost mutacije $\leq 5\%$ daje dobre rezultate.
-Isto tako, vrijednost mutacije ne mora biti statična kroz cijeli algoritam.
-Primjerice, u ranim iteracijama algoritma može biti korisno imati nešto veću vjerojatnost za mutaciju kako bi pretraživali veći prostor rješenja a u kasnijim iteracijama, kada smo nešto bliže rješenju, smanjiti tu vjerojatnost kako bismo manjim izmjenama došli do globalnog optimuma.
+Isto tako, vrijednost mutacije ne mora biti statična tijekom cijelog algoritma.
+Primjerice, u ranim iteracijama algoritma može biti korisno imati nešto veću vjerojatnost za mutaciju kako bi pretraživali veći prostor rješenja, a u kasnijim iteracijama, kada smo nešto bliže rješenju, smanjiti tu vjerojatnost kako bismo manjim izmjenama došli do globalnog optimuma.
 Razlog zbog kojeg se koristi mutacija je što pridonosi različitosti u populaciji.
 Korištenje samo križanja potiče problem konvergencije u lokalnom minimumu, što se pokušava izbjeći unošenjem nasumičnih promjena tako potičući razliku između jedinki.
-Imajući to na umu važno je napomenuti da se genetski algoritam može koristiti koristeći samo mutaciju.
+Imajući to na umu, važno je napomenuti da se genetski algoritam može koristiti koristeći samo mutaciju.
 Isto se ne može reći za križanje.
-Pri rješavanju problema, ne moramo se ograničiti na jednu vrstu mutacije već se dodatna nasumičnost može unjeti korištenjem više vrsta mutacije odjednom.
+Pri rješavanju problema, ne moramo se ograničiti na jednu vrstu mutacije, već se dodatna nasumičnost može unjeti korištenjem više vrsta mutacije odjednom.
 
 \paragraph{Okretanje bitova (\emph{eng. Bit flip})} 
-je mutacija koja je primjenjiva samo na genotipima opisanim kao vektor bitova \emph{npr.} $[1 0 0 1 0 1 1 0 1 1 1]$.
+mutacija je koja je primjenjiva samo na genotipima opisanim kao vektor bitova \emph{npr.} $[1 0 0 1 0 1 1 0 1 1 1]$.
 Uz zadani parametar $\alpha$, koji primjerice može biti $\alpha = \frac{1}{duljina\ vektora}$, svaki bit uz zadanu vjerojatnost negira, pretvarajući $0 \rightarrow 1$ i suprotno (ilustracija ~\ref{fig:bit_flip_mutation}).
 
 \begin{figure}
@@ -146,7 +146,7 @@ Uz zadani parametar $\alpha$, koji primjerice može biti $\alpha = \frac{1}{dulj
 \end{figure}
 
 \paragraph{Ujednačeno mutiranje (\emph{eng. Uniform mutation})}
-se koristi na genotipima opisanim cijelim brojevima ili brojevima s pomičnom točkom.
+koristi se na genotipima opisanim cijelim brojevima ili brojevima s pomičnom točkom.
 Svaki gen koji mutira mijenja u novu nasumičnu vrijednost unutar dozvoljene domene ukoliko ona postoji (ilustracija ~\ref{fig:uniform_mutation}).
 
 \begin{figure}
@@ -170,7 +170,7 @@ Svakom genu koji će biti mutiran pridodaje se šum $X$ (ilustracija ~\ref{fig:g
 \subsection{Elitizam}
 Elitizam je broj najboljih jedinki koje se bez mutiranja prenose u sljedeću generaciju, osiguravajući preživljavanje najboljih jedinki (~\cite{elitism}).
 Definira se cjelobrojnom vrijednosti $\in [0, broj\ jedinki\ u\ populaciji]$.
-U slučaju da je vrijenost 0, ni jedna jedinka se ne prenosi.
+U slučaju da je vrijednost 0, ni jedna jedinka se ne prenosi.
 Pretpostavka iza korištenja elitizma je da će nastati dobar balans između različitosti populacije uzrokovane križanjem i mutacijom potičući pretraživanje širokog prostora rješenja i konstantnog globalnog napretka uzrokovanog elitizmom.
 Rezultat pretpostavke je brža i monotonija konvergencija ka globalnom optimumu.
 Graf ~\ref{fig:elitism} prikazuje utjecaj elitizma pri optimizaciji strategije usmjeravanja podataka prenošenim bežičnom mrežom.
@@ -184,10 +184,10 @@ Graf ~\ref{fig:elitism} prikazuje utjecaj elitizma pri optimizaciji strategije u
 
 
 \subsection{Uvjet zaustavljanja}
-Genetski algoritmi su posebno prikladni i efikasni u rješavanje problema s velikim prostorima pretrage te problemima gdje uobičajeni algoritmi ne bi bili polinomijalno učinkoviti (npr. NP-potpuni problemi) (~\cite{brassard1988algorithmics}).
+Genetski algoritmi posebno su prikladni i efikasni u rješavanje problema s velikim prostorima pretrage te problemima gdje uobičajeni algoritmi ne bi bili polinomijalno učinkoviti (npr. NP-potpuni problemi) (~\cite{brassard1988algorithmics}).
 Pripadanje u skupinu \emph{mekog računarstva} ne garantira potpuno precizna rješenja, već dovoljno precizna za samouvjereno donošenje zaključaka na kraju izvođenja.
 Također, algoritam se izvodi kroz ograničeni broj koraka.
-Postavlja se pitanje, kada zaustaviti koračanje, odnosno algoritam?
+Postavlja se pitanje kada zaustaviti koračanje, odnosno algoritam?
 U praksi, najčešće se koriste sljedeća tri uvjeta zaustavljanja (~\cite{ga_stopping_criteria}):
 \begin{itemize}
 	\item Dosegnut najveći dozvoljeni broj generacija
@@ -196,32 +196,32 @@ U praksi, najčešće se koriste sljedeća tri uvjeta zaustavljanja (~\cite{ga_s
 \end{itemize}
 Ograničenje najvećeg dozvoljenog broja generacija i evaluacija kondicijske funkcije su statička ograničenja.
 Je li uopće moguće precizno odrediti najbolje vrijednosti za statička ograničenja? \\
-Slijepo postavljanje abnormalno velikih vrijednosti te postepeno smanjivanje kroz sljedeća pokretanja algoritma je iznimno neučinkovito.
+Slijepo postavljanje abnormalno velikih vrijednosti te postepeno smanjivanje kroz sljedeća pokretanja algoritma iznimno je neučinkovito.
 Potrebno je određeno znanje o problemu kako bi se postavila barem približno precizna ograničenja na duljinu pretrage prostora rješenja. \\
-Dosegnuta željena preciznost je dinamičko ograničenje koje se može i ne mora doseći u bilo kojem trenutku.
-To znači da za neki problem, za koji smo postavili ograničenje na npr. najviše $100$ generacija, možemo doseći uvjet zaustavljanja npr. grešku $\leq 10^{-3}$ već nakon desetak generacija ako je problem jednostavan ili smo slučajno dobili početnu točku blisku globalnom optimumu.
+Dosegnuta željena preciznost dinamičko je ograničenje koje se može, ali i ne mora doseći u bilo kojem trenutku.
+To znači da za neki problem, za koji smo postavili ograničenje na npr. najviše $100$ generacija, možemo doseći uvjet zaustavljanja, npr. grešku $\leq 10^{-3}$, već nakon desetak generacija ako je problem jednostavan ili smo slučajno dobili početnu točku blisku globalnom optimumu.
 Analogno tome, zapinjanje u lokalnom optimumu može izazvati istek statičkih ograničenja bez postizanja željene preciznosti. \\
 Znači li spomenuto da je dostizanje željene preciznosti najbolje mjerilo kvalitete dobivenog modela? \\
 U kontekstu \emph{strojnog učenja}, čemu pripada i genetsko programiranje, često se spominju različiti skupovi podataka. \\
 Razlikujemo tri skupa (~\cite{datasets}):
 
 \paragraph{Skup za trening}
-su podaci na temelju kojih se model \emph{uči} uspoređujući svoje izlaze sa željenim iz skupa.
+podaci su na temelju kojih se model \emph{uči} uspoređujući svoje izlaze sa željenim iz skupa.
 
 \paragraph{Skup za validaciju} 
-je objektivniji skup podataka na kojima se model nikad ne uči.
+objektivniji je skup podataka na kojima se model nikad ne uči.
 S obzirom na svojstvo učenja da će pokušati najbolje preslikati ulaze na izlaze što sličnije željenim iz skupa za trening lako može doći do \emph{pretreniranja}.
-S tim na umu, validacijski skup je objektivnije mjerilo kvalitete modela.
+S tim na umu, validacijski skup objektivnije je mjerilo kvalitete modela.
 
 \paragraph{Testni skup}
-su podaci koji se prezentiraju konačnom modelu.
-Odvajaju se od cjelokupnog skupa podataka na samom početku eksperimenta te su rezervirani za konačne modele koji se žele daljnije ispitati.
+podaci su koji se prezentiraju konačnom modelu.
+Odvajaju se od cjelokupnog skupa podataka na samom početku eksperimenta te su rezervirani za konačne modele koji se žele dalje ispitati.
 Imitiraju podatke i situacije iz stvarnog svijeta jer kako su podaci odvojeni na samom početku, model ih nikad nije vidio.
-Slično validacijskom skupu s razlikom da se u ni jednoj točki postupka treniranja podaci iz testnog skupa ne prikažu modelu. \\
+Slično validacijskom skupu s razlikom da se u niti jednoj točki postupka treniranja podaci iz testnog skupa ne prikažu modelu. \\
 
-Spomenuti skupovi se nadovezuju na svojstvo algoritma da će kroz vrijeme samo preciznije svoje izlaze približavati onima na kojima se trenira dosežući pritom fazu pretreniranja.
+Spomenuti skupovi nadovezuju se na svojstvo algoritma da će tijekom vremena samo preciznije svoje izlaze približavati onima na kojima se trenira dosežući pritom fazu pretreniranja.
 Graf ~\ref{fig:train_test_loss} prikazuje ovisnost odstupanja na različitim skupovima podataka te optimalnu točku s najboljim objektivnim modelom.
-Područje lijevo od označenog trenutka je vrijeme tijekom kojeg je model uz stalno učenje bio objektivan. 
+Područje lijevo od označenog trenutka jest vrijeme tijekom kojeg je model uz stalno učenje bio objektivan. 
 Desno od trenutka je nastupilo pretreniranje.
 Model sve bolje preslikava ulaze onima iz skupa za trening, no sve ostalo postaje nepreciznije.
 Graf ~\ref{fig:overfitting} Prikazuje rad objektivnog i pretreniranog modela.
@@ -241,12 +241,12 @@ Graf ~\ref{fig:overfitting} Prikazuje rad objektivnog i pretreniranog modela.
 	\end{subfigure}
 \end{figure}
 
-Iz priloženog je vidljivo kako tema uvjeta zaustavljanja nije jednostavna kao što se na prvu čini te postoji puno parametara koji uvjetuju koji model uzeti.
+Iz priloženog vidljivo je kako tema uvjeta zaustavljanja nije jednostavna kao što se na prvu čini te postoji puno parametara koji uvjetuju koji model uzeti.
 ~\cite{ga_stopping_criteria} naglašava da korištenje isključivo statičkih ograničenja ne garantira dobre rezultate.
-Dinamička provjera sa drugim skupovima podataka je pouzdana i provjerena metoda uz manu što znatno utječe na vrijeme izvođenja algoritma.
+Dinamička provjera s drugim skupovima podataka je pouzdana i provjerena metoda, uz manu što znatno utječe na vrijeme izvođenja algoritma.
 ~\cite{fuzzy_logic} ispituju i predlažu korištenje meke logike kako bi definirali uvjet zaustavljanja.
-Samo pogađanje i pretpostavka dobrih parametara je iznimno kompliciran problem koji se pojavljuje i prije pokretanja samog eksperimenta.
-Također, s obzirom na rast računalne moći i na trenutne trendove (~\cite{ga_stopping_criteria}), adaptivni i dinamički uvjeti zaustavljanja su višestruko isplativi za korištenje tijekom rješavanja problema.
+Samo pogađanje i pretpostavka dobrih parametara iznimno je kompliciran problem koji se pojavljuje i prije pokretanja samog eksperimenta.
+Također, s obzirom na rast računalne moći i na trenutne trendove (~\cite{ga_stopping_criteria}), adaptivni i dinamički uvjeti zaustavljanja višestruko su isplativi za korištenje tijekom rješavanja problema.
 
 \section{Kartezijsko genetsko programiranje}
 \input{Chapters/cartesian.tex}

@@ -55,37 +55,38 @@ Arhitektura CGP jedinke definirana je sljedećim vrijednostima:
 \end{itemize}
 Broj izlaza $>1$ nije tipična stvar za genetsko programiranje i veliki je benefit korištenja arhitekture inspirirane neuronskom mrežom.
 Brojem najvećih vrijednosti unazad koje može čvor primiti definiramo složenost modela.
-Priroda grafa je takva da se vrijednosti od prvog stupca šalju dublje sve do izlaza.
+Priroda grafa takva je da se vrijednosti od prvog stupca šalju dublje sve do izlaza.
 Ako je $l = 1$ definirali smo da svaki čvor može biti spojen najpliće u sloj prije sebe.
-Tu mu dajemo manje slobode te ga ograničavamo na složenije modele nego da smo dozvolili $l > 1$.
+Tu mu dajemo manje slobode te ga ograničavamo na složenije modele, nego da smo dozvolili $l > 1$.
 Naravno, ako želimo dozvoliti spajanje s čvorom iz bilo kojeg stupca, postavljamo  $l=n_c$.
 
 Parametrima $n_r$ i $n_c$ definiramo broj računalnih čvorova kao $L_n = n_r \times n_c$.
 Imajući to na umu, ne moraju svi čvorovi biti iskorišteni.
-Čvorove koji ne vode prema izlazu nazivamo ne-aktivnim (\emph{eng. non-coding}), njihovi ulazi i funkcija nemaju nikakav utjecaj na konačni izlaz iz mreže.
+Čvorove koji ne vode prema izlazu nazivamo ne-aktivnim (\emph{eng. non-coding}).
+Njihovi ulazi i funkcija nemaju nikakav utjecaj na konačni izlaz iz mreže.
 Tu je vidljiva razlika između genotipa koji ima fiksnu i konstantnu duljinu i fenotipa čija duljina i oblik ovise o aktivnim i neaktivnim čvorovima.
 Na slici \ref{fig:cgp_gene_feno} vidljiv je genotip CGP mreže i pripadajući fenotip s jasno označenim ne-aktivnim čvorovima i pravilima indeksiranja.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Illustrations/inactive_nodes.png}
-	\caption{CGP genotip i fenotip digitalnog kruga. U čvorovima su vidljive funkcije koje izvode a čvorovi koji su iscrtani su neaktivni jer ne vode ni na jedan izlaz. Također su vidljivi indeksi svakog čvora i u genotipu i fenotipu. Izvor \cite{cgp}}
+	\caption{CGP genotip i fenotip digitalnog kruga. U čvorovima su vidljive funkcije koje izvode, a čvorovi koji su iscrtani su neaktivni jer ne vode ni na jedan izlaz. Također vidljivi su indeksi svakog čvora i u genotipu i fenotipu. Izvor \cite{cgp}}
 	\label{fig:cgp_gene_feno}
 \end{figure}
 
 I u praksi i u tablici \ref{table:function_table} vidljivo je da nemaju sve funkcije jednak broj ulaza.
-Na primjer funkcija pod rednim brojem $4$, odnosno $\cos{x}$ ima jedan ulaz, dok funkcija $5$, $max(x, y)$ ima dva ulaza.
+Na primjer, funkcija pod rednim brojem $4$, odnosno $\cos{x}$, ima jedan ulaz, dok funkcija $5$, $max(x, y)$ ima dva ulaza.
 Treba li svakom čvoru dati točno onaj broj ulaza koliko traži njegova funkcija?
-Naravno da ne, svako mutiranje mreže zahtjevalo bi ažuriranje broja ulaza u čvor i unjelo dodatnu kompleksnost u izvođenje te bi narušilo jednakost duljine genotipa svih jedinki.
+Naravno da ne, svako mutiranje mreže zahtjevalo bi ažuriranje broja ulaza u čvor i unijelo dodatnu kompleksnost u izvođenje te bi narušilo jednakost duljine genotipa svih jedinki.
 Za svaku funkciju se zna njen broj ulaza (\emph{eng. arity}).
-Ta vrijednost se iskoristi pri dodjeli broja ulaza čvorovima tako da svaki čvor dobije onoliko ulaza koliko prima funkcija s najvećim brojem ulaza.
+Ta vrijednost koristi se pri dodjeli broja ulaza čvorovima tako da svaki čvor dobije onoliko ulaza koliko prima funkcija s najvećim brojem ulaza.
 Tako osiguravamo konstantnu duljinu genotipa i uklanjamo potrebu za ažuriranjem čvora pri promjeni funkcije iz npr. $cos{x}$ u $x + y$.
 
 Prednost broja izlaza većeg od jedan vidljiva je na slici \ref{fig:cgp_gene_feno}.
 Da se koristilo sintaksno stablo, bila bi potrebna četiri modela, jedan za svaki od izlaza A, B, C i D.
-Velika prednost osjeti se i u obradi slike.
+Velika prednost vidi se i u obradi slike.
 \cite{conv_gp} predstavio je obradu slike konvolucijskim metodama, inače rezerviranim za neuronske mreže, genetskim programiranjem.
-Koristeći predložene metode, za pokušaje izlučivanja $n$ značajki (\emph{eng. feature}) potrebno je koristiti $n$ sintaksnih stabala.
+Koristeći predložene metode, za pokušaje izlučivanja $n$ značajki (\emph{eng. feature}), potrebno je koristiti $n$ sintaksnih stabala.
 U slučaju korištenja CGP-a, dovoljna je samo jedna jedinka za sve značajke.
 
 \subsection{Evoluiranje}
@@ -100,25 +101,25 @@ Najčešće se izražava kao postotak gena koji se mogu mutirati.
 Ilustracija \ref{fig:cgp_mutation} prikazuje utjecaj mutiranja jednog veznog gena u genotipu.
 \cite{cgp_experiment} pokazuje da u genotipima s $\approx 4000$ čvorova, postotak ne-aktivnih čvorova iznosi čak $95\%$.
 Taj podatak, spojen s predloženom stopom mutacije unosi problem redundantne mutacije.
-Reduntantna mutacija je primjena mutacije na neaktivni čvor jer bez obzira promjenili vezu ili funkciju ne utječe na izlaz a samim time ni na kvalitetu CGP-a.
+Reduntantna mutacija jest primjena mutacije na neaktivni čvor jer bez obzira promjenili vezu ili funkciju ne utječe na izlaz a samim time ni na kvalitetu CGP-a.
 Iako \cite{cgp} adresira problem kao benefit jer nakon uspješnog mutiranja nakon više redundantnih nastaje višestruko mutirana jedinka, rezultati koje sam ja dobivao ne podupiru tu tvrdnju.
-Pokušavajući povećati efikasnost algoritma, u vlastitoj implementaciji sam uzimao u obzir aktivnost, odnosno ne-aktivnost čvora te sam iste nisam uzimao u obzir.
+Pokušavajući povećati efikasnost algoritma, u vlastitoj implementaciji uzimao sam u obzir aktivnost, odnosno ne-aktivnost čvora te iste nisam uzimao u obzir.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Illustrations/cgp_mutation.png}
-	\caption{CGP fenotip prije i nakon mutacije. Aktivni, odnosno neaktivni čvorovi su jasno naznačeni kao i novo-nastala veza.}
+	\caption{CGP fenotip prije i nakon mutacije. Aktivni, odnosno, neaktivni čvorovi jasno su naznačeni kao i novo-nastala veza.}
 	\label{fig:cgp_mutation}
 \end{figure}
 
 \subsubsection{Križanje}
 Kao što je spomenuto, genotip je vektor cijelih brojeva fiksne duljine.
 Velika prednost toga je što je križanje iznimno lako za ostvariti.
-Za razliku od mutacije ne moramo paziti na domene pojedinih gena.
+Za razliku od mutacije, ne moramo paziti na domene pojedinih gena.
 Operator križanja koji se koristi je križanje u $k$ točaka gdje je $k = 1$.
-Iako je lako izvodivo sa sobom nosi nedostatke.
+Iako je lako izvodivo, sa sobom nosi nedostatke.
 Rezultat križanja je spajanje dva podgrafa koja zajedno daju lošije rezultate nego dva originalna CGP-a zasebno.
-\cite{cgp_experiment} predstavlja nekolicinu radova s obečavajućim rezultatima koristeći eksperimentalne načine križanja no istraživanje i isprobavanje istih nije u sklopu ovog rada.
+\cite{cgp_experiment} predstavlja nekolicinu radova s obečavajućim rezultatima koristeći eksperimentalne načine križanja, no istraživanje i isprobavanje istih nije u sklopu ovog rada.
 
 \subsubsection{Algoritam}
 Algoritam evolucije koji predlaže \cite{cgp} je $1 + \lambda$.

@@ -102,12 +102,12 @@ Algoritam \ref{alg:cgpae_evolution} prikazuje detaljnije provedene korake pri u�
 	\label{fig:ae_example}
 \end{figure}
 
-Za potrebe ispitivanja teze o uspješnosti korištenja CGP-a kao komponente autoenkodera odlučio sam reproducirati slike veličine $3 \times 3$ vidljive na \ref{fig:ae_example}.
+Za potrebe ispitivanja teze o uspješnosti korištenja CGP-a kao komponente autoenkodera, odlučio sam reproducirati slike veličine $3 \times 3$ vidljive na \ref{fig:ae_example}.
 Prilikom ulaska slike u enkoder pretvara se u vektor $v$ gdje je $|v| = 9$.
-Zadaća autoenkodera je stvoriti vektor značajki $f$ s $4$ komponente ($|f| = 4$).
+Zadaća je autoenkodera stvoriti vektor značajki $f$ s $4$ komponente ($|f| = 4$).
 Dekoder iz vektora značajki treba reproducirati dani ulaz.
 
-Nažalost, slično kao i kod \cite{why_ae_diff} rezultati nisu obečavajući.
+Nažalost, slično kao i kod \cite{why_ae_diff}, rezultati nisu obećavajući.
 Prikaz najboljih rezultata vidljiv je na slici \ref{fig:ae_results}.
 
 \begin{figure}[H]
@@ -134,10 +134,10 @@ Korišteni parametri su sljedeći:
 \end{itemize}
 Ideja je bila početi s jednostavnim skupom podataka (npr. kao na slici \ref{fig:ae_example}) te prelaziti na postupno složenije skupove podataka također korištene u \cite{why_ae_diff}.
 No, neuspjeh na jednostavnom skupu podataka doveo je do zaključka da bi složeniji skupovi podataka predstavljali još veći problem.
-Uz iste parametre također isproban je jednak skup podataka no s ulaznim veličinama $2 \times 2$, odnosno bez praznina između uglova.
+Uz iste parametre također isproban je jednak skup podataka, no s ulaznim veličinama $2 \times 2$, odnosno, bez praznina između uglova.
 CGPAE u tom slučaju lako pronalazi rješenje.
-Graf \ref{fig:ae_boxplot} prikazuje ovisnost broja značajki očitanih od enkodera i pogreške.
-Zanimljivo je primjetiti kako broj značajki ne utječe puno na medijan no najmanji broj, u ovom slučaju $|f| = 2$ ima najmanju vrijednost za odskakajuću pogrešku.
+Graf \ref{fig:ae_boxplot} prikazuje ovisnost broja značajki očitanih od enkodera i ukupne pogreške.
+Zanimljivo je primijetiti kako broj značajki ne utječe puno na medijan, no najmanji broj, u ovom slučaju $|f| = 2$ ima najmanju vrijednost za odskakajuću pogrešku.
 
 \begin{figure}[H]
 	\centering

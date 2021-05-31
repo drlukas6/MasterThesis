@@ -1,9 +1,9 @@
 Detektiranje rubova može se promatrati kao tehnika čitanja rubova objekata vidljivih na slici.
-Samo po sebi je jedna od osnovnih, nisko razinskih tehnika računalnog vida s mnogim primjenama visoke razine uključujući detekciju objekata i segmentaciju slike (\emph{eng. Image Segmentation}) (\cite{Liu_2019}).
+Samo po sebi jedna je od osnovnih, nisko razinskih tehnika računalnog vida s mnogim primjenama visoke razine, uključujući detekciju objekata i segmentaciju slike (\emph{eng. Image Segmentation}) (\cite{Liu_2019}).
 
 Problem je definiran kao pokušaj imitiranja rada \emph{Sobel} operatora.
 
- \paragraph{Sobel operator} je također operator koji koristi konvoluciju.
+ \paragraph{Sobel operator} također je operator koji koristi konvoluciju.
  Koriste se dvije konvolucijske jezgre (\cite{Sekanina2011}):
  \[
 	 p = \frac{1}{8}
@@ -21,7 +21,7 @@ Problem je definiran kao pokušaj imitiranja rada \emph{Sobel} operatora.
 	 \end{bmatrix}
  \]
 Zajedno, jezgre služe kako bi se izračunao gradijent slike.
-Jezgra $p$ se koristi kako bi se izračunala procjena derivacije za horizontalne promjene a $q$ za vertikalne. \\
+Jezgra $p$ koristi se kako bi se izračunala procjena derivacije za horizontalne promjene, a $q$ za vertikalne. \\
 Vrijednost novonastale slike $G$ na koordinatima $(i, j)$ računa se kao
 $$
 G_{(i, j)} = c + |p_{(i, j)}| + |q_{(i, j)}|
@@ -37,11 +37,11 @@ Primjer djelovanja Sobel operatora na fotografiju Lene vidljiv je na slici \ref{
 \end{figure}
 
 \subsubsection{Postavke}
-Za razliku od micanja šuma koristi se konvolucijska jezgra koja prihvaća i srednju, promatranu vrijednost.
+Za razliku od micanja šuma koristi se konvolucijska jezgra koja prihvaća i srednju promatranu vrijednost.
 Time, filter možemo definirati kao $f(x): [0, 255]^9 \rightarrow [0, 255]$.
 
 Fotografije koje su se promatrale u trening i validacijskoj fazi vidljive su na slici \ref{fig:edge_detection_train_val_in}.
-Umjesto direktne usporedbe sa Sobel slikama odlučio sam se na usporedbu sa slikama dobivenim \emph{Canny} Algoritmom.
+Umjesto direktne usporedbe sa Sobel slikama, odlučio sam se na usporedbu sa slikama dobivenim \emph{Canny} Algoritmom.
 Slike nastale primjenom Canny algoritma imaju vrijednosti $0$ ili $1$ ovisno pripada li promatrana vrijednost na koordinatama $(i, j)$ rubu što sam koristio kao prednost u razvoju modela.
 Jednako kao u više-kategoričkoj klasifikaciji gdje se koristi vektor vrijednosti gdje su sve vrijednosti $0$ osim točne koja je $1$ (\emph{eng. One Hot Encoding}).
 
@@ -61,16 +61,16 @@ Jednako kao u više-kategoričkoj klasifikaciji gdje se koristi vektor vrijednos
 	\label{fig:edge_detection_train_val_in}
 \end{figure}
 
-Problem koji se rano javio je što je $\approx 70\%$ slike vrijednosti $0$, odnosno crno.
+Problem koji se rano javio je što je $\approx 70\%$ slike vrijednosti $0$, odnosno, crno.
 Rezultat toga i korištenja $L1$ pogreške je navođenje modela da teži samo predviđanju te vrijednosti.
 Korištenje srednje kvadratne pogreške (\emph{eng. Mean Squared Error (MSE)})
 $$err = \frac{1}{n}\sum_{i=1}^{n}(y_{cgp} - y_{skup\ podataka})^2$$
-pokazalo se kao dobar odgovor na problem.
-U slučaju veće razlike npr. predviđanje $1$ na željenu vrijednost $0$ unutar sume bi rezultiralo razlikom od $255^2$ dok bi manje razlike težile ka $0$.
+pokazalo se dobrim odgovorom na problem.
+U slučaju veće razlike npr. predviđanje $1$ na željenu vrijednost $0$ unutar sume rezultiralo bi razlikom od $255^2$, dok bi manje razlike težile ka $0$.
 
 Tablica \ref{table:edge_detection_function_set} prikazuje funkcije koje su se mogle koristiti u čvorovima.
-Vrijednosti nisu morale biti unutar skupa $[0, 255]$ a na izlazu bi se prilagodile najbližoj rubnoj vrijednosti u slučaju da izlaz nije unutar skupa.
-Također ako se funkciji $3$, dijeljenju, prosljedi nepodržana vrijednost u nazivnik koristi se kao funkcija identiteta, odnosno, izlaz bude brojnik.
+Vrijednosti nisu morale biti unutar skupa $[0, 255]$, a na izlazu bi se prilagodile najbližoj rubnoj vrijednosti u slučaju da izlaz nije unutar skupa.
+Također, ako se funkciji $3$, dijeljenju, prosljedi nepodržana vrijednost u nazivnik koristi se kao funkcija identiteta, odnosno, izlaz bude brojnik.
 Algoritam odabira je $1 + \lambda$ s $\lambda = 8$.
 Povećanje parametra $\lambda$ zahtjeva smanjenje najvećeg dozvoljenog broja iteracija koji je postavljen na $20$, puno manje nego pri micanju šuma gdje je definirano kao $500$.
 
@@ -100,7 +100,7 @@ Povećanje parametra $\lambda$ zahtjeva smanjenje najvećeg dozvoljenog broja it
 
 Promatrani podskupovi veličina su $40 \times 40$.
 Time, skup podataka sastoji se od $1600$ vektora ($|v| = 9$), po jedan za svaku promatranu konvolucijsku jezgru.
-Trening i validacijski skup je uzet sa iste fotografije Lene u dva odvojena podskupa (\ref{fig:edge_detection_in_out_pair_example}), dok je za testnu fotografiju odabrana fotografija kamermana.
+Trening i validacijski skup uzet je sa iste fotografije Lene u dva odvojena podskupa (\ref{fig:edge_detection_in_out_pair_example}), dok je za testnu fotografiju odabrana fotografija kamermana.
 
 \begin{figure}
 	\centering
@@ -111,8 +111,8 @@ Trening i validacijski skup je uzet sa iste fotografije Lene u dva odvojena pods
 
 \subsubsection{Rezultati}
 Rezultati detekcije ruba vidljivi su na slikama \ref{fig:edge_detection_results}. % TODO: Dodati graf!
-Pomalo neočekivano, rezultati izgledaju bolje na testnoj slici no to pridodajem značajkama fotografije pogodnijim za detekciju rubova.
-Zbog tog, vjerujem da je dosta težak zadatak za detekciju rubova fotografija s vidljivom kosom ili bilo kakvim sitnim detaljima.
+Pomalo neočekivano, rezultati izgledaju bolje na testnoj slici, no to pridodajem značajkama fotografije pogodnijim za detekciju rubova.
+Zbog toga, vjerujem da je dosta težak zadatak za detekciju rubova fotografija s vidljivom kosom ili bilo kakvim sitnim detaljima.
 Veliku ulogu igrao je i izbor podskupa iz kojeg se isčitavaju podaci za trening.
 Količina praznog dijela, vrsta i broj vidljivih krivulja, zajedno s ispravnim odabirom funkcije koju minimiziramo igra najveću ulogu.
 U usporedbi s problemom micanja šuma, detekcija rubova rješenje pronalazi iznimno brzo.
