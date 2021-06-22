@@ -12,17 +12,17 @@ Adrese funkcije pohranjene su u tablici funkcija (npr. tablica \ref{table:functi
 
 \begin{table}
 	\centering
-	\begin{tabular}{||c c||}
+	\begin{tabular}{||c c c c||}
 		\hline
-		Adresa funkcije & Funkcija \\ [0.5ex]
+		Adresa funkcije & Funkcija & Broj ulaza & Broj izlaza\\ [0.5ex]
 		\hline\hline
-		0 & $x \times y$ \\
-		1 & $x + y$ \\
-		2 & $\frac{x}{y}$ \\
-		3 & $\sin{x}$ \\
-		4 & $\cos{x}$ \\ 
-		5 & $max(x, y)$ \\
-		6 & $min(x, y)$ \\ [1ex]
+		0 & $x \times y$ & 2 & 1\\
+		1 & $x + y$  & 2 & 1\\
+		2 & $\frac{x}{y}$ & 2 & 1\\
+		3 & $\sin{x}$ & 1 & 1\\
+		4 & $\cos{x}$ & 1 & 1\\ 
+		5 & $max(x, y)$ & 2 & 1\\
+		6 & $min(x, y)$ & 2 & 1\\ [1ex]
 		\hline
 	\end{tabular}
 	\caption{Primjer funkcijske tablice}
@@ -34,13 +34,21 @@ definira izvor podataka za čvor.
 Indeksiran je jednakim pravilom kao i čvorovi jer čvor kao ulaz prima vrijednost čvora sloja plićeg od sebe ili direktno iz ulaza u graf. \\
 \\
 Osim opisa skrivenih čvorova (čvorova između ulaza i izlaza), genotip na kraju sadrži i $n_o$ (broj izlaza) veznih gena. \\
-Primjer genotipa vidljiv je na ilustraciji \ref{fig:genotype}
+Primjer genotipa vidljiv je na ilustraciji \ref{fig:genotype}. \\
+Ilustracija \ref{fig:cgp_output_sample} prikazuje CGP jedinku te način na koji čvorovi dalje prosljeđuju svoje izlaze do konačnog rezultata.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Illustrations/genotype.png}
 	\caption{Primjer genotipa za CGP s dva ulaza, četiri sakrivena čvora i dva izlaza}
 	\label{fig:genotype}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{Illustrations/cgp_output_sample.png}
+	\caption{Primjer CGP jedinke arhitekture $2 \rightarrow 3 \times 3 \rightarrow 2$, definirane s funkcijama iz tablice \ref{table:function_table} s vidljivim ulazima $[0.725, 0.937]$, izlazima pojedinih aktivnih čvorova te konačnim rezultatom $[0.999, -7.840]$.}
+	\label{fig:cgp_output_sample}
 \end{figure}
 
 \subsection{Arhitektura}

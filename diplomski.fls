@@ -305,6 +305,9 @@ INPUT Chapters/cartesian.tex
 INPUT Assets/Illustrations/genotype.png
 INPUT ./Assets/Illustrations/genotype.png
 INPUT ./Assets/Illustrations/genotype.png
+INPUT Assets/Illustrations/cgp_output_sample.png
+INPUT ./Assets/Illustrations/cgp_output_sample.png
+INPUT ./Assets/Illustrations/cgp_output_sample.png
 INPUT Assets/Illustrations/inactive_nodes.png
 INPUT ./Assets/Illustrations/inactive_nodes.png
 INPUT ./Assets/Illustrations/inactive_nodes.png
@@ -330,6 +333,9 @@ INPUT ./Assets/Experiments/GrainRemoval/input_example.png
 INPUT Assets/Illustrations/moore.png
 INPUT ./Assets/Illustrations/moore.png
 INPUT ./Assets/Illustrations/moore.png
+INPUT Assets/Experiments/GrainRemoval/lena_subsets.png
+INPUT ./Assets/Experiments/GrainRemoval/lena_subsets.png
+INPUT ./Assets/Experiments/GrainRemoval/lena_subsets.png
 INPUT Assets/Experiments/GrainRemoval/lena.png
 INPUT ./Assets/Experiments/GrainRemoval/lena.png
 INPUT ./Assets/Experiments/GrainRemoval/lena.png
@@ -340,8 +346,6 @@ INPUT Assets/Experiments/GrainRemoval/trg.jpg
 INPUT ./Assets/Experiments/GrainRemoval/trg.jpg
 INPUT ./Assets/Experiments/GrainRemoval/trg.jpg
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmri8t.tfm
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT Assets/Experiments/GrainRemoval/noisy_lena.png
 INPUT ./Assets/Experiments/GrainRemoval/noisy_lena.png
 INPUT ./Assets/Experiments/GrainRemoval/noisy_lena.png
@@ -378,6 +382,8 @@ INPUT ./Assets/Experiments/GrainRemoval/sp_train_val_1.png
 INPUT Assets/Experiments/GrainRemoval/sp_train_val_2.png
 INPUT ./Assets/Experiments/GrainRemoval/sp_train_val_2.png
 INPUT ./Assets/Experiments/GrainRemoval/sp_train_val_2.png
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT Assets/Experiments/LargeGrainRemoval/large_sp_train_val.png
 INPUT ./Assets/Experiments/LargeGrainRemoval/large_sp_train_val.png
 INPUT ./Assets/Experiments/LargeGrainRemoval/large_sp_train_val.png
@@ -399,6 +405,8 @@ INPUT ./Assets/Experiments/LargeGrainRemoval/lgr_errs.png
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmbi8t.tfm
 INPUT Chapters/Experiments/edge_detection.tex
 INPUT Chapters/Experiments/edge_detection.tex
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmbi8t.vf
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmbi8r.tfm
 INPUT Assets/Experiments/EdgeDetection/lena_sobel.png
 INPUT ./Assets/Experiments/EdgeDetection/lena_sobel.png
 INPUT ./Assets/Experiments/EdgeDetection/lena_sobel.png
@@ -409,10 +417,6 @@ INPUT ./Assets/Experiments/EdgeDetection/lena_canny.jpg
 INPUT Assets/Experiments/EdgeDetection/cameraman_canny.jpg
 INPUT ./Assets/Experiments/EdgeDetection/cameraman_canny.jpg
 INPUT ./Assets/Experiments/EdgeDetection/cameraman_canny.jpg
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmbi8t.vf
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmbi8r.tfm
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT Assets/Experiments/EdgeDetection/edge_detection_in_out_pair.png
 INPUT ./Assets/Experiments/EdgeDetection/edge_detection_in_out_pair.png
 INPUT ./Assets/Experiments/EdgeDetection/edge_detection_in_out_pair.png
@@ -429,6 +433,8 @@ INPUT ./Assets/Experiments/EdgeDetection/camerman_edges.png
 INPUT Assets/Experiments/EdgeDetection/edge_detection_graph.png
 INPUT ./Assets/Experiments/EdgeDetection/edge_detection_graph.png
 INPUT ./Assets/Experiments/EdgeDetection/edge_detection_graph.png
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT Chapters/data_gen.tex
 INPUT Chapters/data_gen.tex
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/courier/pcrr8t.tfm

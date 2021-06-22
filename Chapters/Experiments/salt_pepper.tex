@@ -57,6 +57,15 @@ Početne slike u punoj su veličini $256 \times 256$.
 Na slike je programski dodan nasumičan šum na $5\%$ vrijednosti.
 Zbog polinomijalnog rasta broja vrijednosti s rastom slike, promatrani su podskupovi veličine $30 \times 30$.
 Time nastaje skup podataka od $900$ vrijednosti.
+Slike \ref{fig:lena_subsets} prikazuju cijelu sliku, podskup i jednu vrijednost konvolucijske jezgre iz podskupa.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{Experiments/GrainRemoval/lena_subsets.png}
+	\caption{Prikaz cijele fotografije Lene, jedan promatrani podskup veličine $30 \times 30$ i jedna vrijednost jezgre veličine $3 \times 3$ iz podskupa.}
+	\label{fig:lena_subsets}
+\end{figure}
+
 Fotografije \ref{fig:sp_samples} prikazuju slike koje su se koristile u pojedinim fazama.
 
 Arhitektura CGP-a definirana je s $20$ funkcijskih čvorova raspodjeljenih kao $2 \times 10$, odnosno, $2$ retka i $10$ stupaca.
@@ -73,17 +82,17 @@ Funkcije su odabrane na način da izlaz uvijek odgovara skupu $[0, 255$] iako je
 
 \begin{table}
 	\centering
-	\begin{tabular}{||c c c||}
+	\begin{tabular}{||c c c c||}
 		\hline
-		Adresa funkcije & Funkcija & Broj ulaza \\ [0.5ex]
+		Adresa funkcije & Funkcija & Broj ulaza & Broj izlaza \\ [0.5ex]
 		\hline \hline
-		0 & $max$ & 8 \\
-		1 & $min$ & 8 \\ 
-		2 & $avg$ & 8 \\ 
-		3 & $mean$ & 8 \\ 
-		4 & $sum\ mod\ 256$ & 8 \\ 
-		5 & $\sqrt{sum}$ & 8 \\ 
-		6 & $max - min$ & 8 \\ [1ex]
+		0 & $max$ & 8 & 1\\
+		1 & $min$ & 8 & 1\\ 
+		2 & $avg$ & 8 & 1\\ 
+		3 & $mean$ & 8 & 1\\ 
+		4 & $sum\ mod\ 256$ & 8 & 1\\ 
+		5 & $\sqrt{sum}$ & 8 & 1\\ 
+		6 & $max - min$ & 8 & 1\\ [1ex]
 		\hline
 	\end{tabular}
 	\caption{Funkcije korištene u postupku micanja šuma sa slike}
@@ -91,10 +100,10 @@ Funkcije su odabrane na način da izlaz uvijek odgovara skupu $[0, 255$] iako je
 \end{table}
 
 \begin{figure}
-	\caption{Fotografije na koje će biti primjenjen šum korištene u trening, validacijskoj i testnoj fazi}
+	\caption{Fotografije na koje će biti primjenjen šum korištene u fazi učenja, validacijskoj i testnoj fazi}
 	\begin{subfigure}[t]{0.45\textwidth}
 		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/lena.png}
-		\caption{Lena, fotografija na kojoj će se izvoditi trening i na temelju koje će se model korigirati}
+		\caption{Lena, fotografija na kojoj će se izvoditi učenje i na temelju koje će se model korigirati}
 		\label{fig:sp_train_sample}
 	\end{subfigure}
 	\begin{subfigure}[t]{0.45\textwidth}
@@ -119,7 +128,7 @@ Najveća razlika očekivano je najvidljivija na testnoj slici koja je istovremen
 
 \begin{figure}
 	\centering
-	\caption{Fotografije iz trening, validacijske i testne faze prije i nakon micanja šuma CGP-om. Na dnu je također prikazana razlika dobivene slike i one željene.}
+	\caption{Fotografije iz faze za učenje, validacijske i testne faze prije i nakon micanja šuma CGP-om. Na dnu je također prikazana razlika dobivene slike i one željene.}
 	\begin{subfigure}[t]{0.32\textwidth}
 		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/noisy_lena.png}
 		\caption{Lena s $5\%$ šuma}
@@ -147,7 +156,7 @@ Najveća razlika očekivano je najvidljivija na testnoj slici koja je istovremen
 	\end{subfigure}
 	\begin{subfigure}[t]{0.32\textwidth}
 		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/sp_diff_train.png}
-		\caption{Razlika između dobivene i željene trening fotografije}
+		\caption{Razlika između dobivene i željene fotografije za učenje}
 	\end{subfigure}
 	\begin{subfigure}[t]{0.32\textwidth}
 		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/sp_diff_val.png}
@@ -160,7 +169,8 @@ Najveća razlika očekivano je najvidljivija na testnoj slici koja je istovremen
 	\label{fig:sp_result_grid}
 \end{figure}
 
-Osim grafičkog prikaza rezultata i subjektivne procjene kvalitete rezultata grafovi \ref{fig:sp_train_val_graph_1} i \ref{fig:sp_train_val_graph_2} prikazuju kretanje trening i validacijske greške tijekom iteracija algoritma za dva nasumična pokretanja.
+Osim grafičkog prikaza rezultata i subjektivne procjene kvalitete rezultata grafovi \ref{fig:sp_train_val_graph_1} i \ref{fig:sp_train_val_graph_2} prikazuju kretanje greške na skupu za učenje i validacijske greške tijekom iteracija algoritma za dva nasumična pokretanja.
+Odabrana jedinka je ona s grafa \ref{fig:sp_train_val_graph_1} jer uz to što ima validacijsku pogrešku usporedivu s jedinkom s grafa \ref{fig:sp_train_val_graph_2} nije pokazala znakove prenaučenosti.
 Također, prikazana $L1$ pogreška je prilikom izračuna dodatno podjeljena s $255$, odnosno $err = \frac{err_{L1}}{255}$, kako bi se vrijednosti dobile unutar skupa $[0, 1]$.
 
 \begin{figure}
@@ -173,7 +183,7 @@ Također, prikazana $L1$ pogreška je prilikom izračuna dodatno podjeljena s $2
 	\end{subfigure}
 	\begin{subfigure}[t]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{Experiments/GrainRemoval/sp_train_val_2.png}
-		\caption{Primjer kretanja $L1$ pogreške s vidljivim nastankom pretreniranja nakon $70.$ iteracije}
+		\caption{Primjer kretanja $L1$ pogreške s vidljivim nastankom prenaučenosti nakon $70.$ iteracije}
 		\label{fig:sp_train_val_graph_2}
 	\end{subfigure}
 	\label{fig:sp_train_val_graph}
@@ -184,8 +194,8 @@ Definirani CGP nije pokazao dobre rezultate u micanju šuma sa slike $40\%$ prek
 CGP koji se pokazao korisnim koristio je arhitekturu $2 \times 20$ s parametrom $L = 2$.
 Skup funkcija bio je isti kao u radu s manjim postocima (tablica \ref{table:sp_function_set}).
 
-Također, koristio sam trening, validacijsku i testnu sliku.
-Razlika s prošlim eksperimentom je što sam u ovom slučaju za trening i validacijsku sliku koristio dva odvojena podskupa fotografije Lene (Slika \ref{fig:large_sp_train_val_illustration}), a kao testnu sliku fotografiju kamermana (Fotografija \ref{fig:sp_samples_camerman}).
+Također, koristile su se fotografije za učenje, validaciju i testiranje.
+Razlika s prošlim eksperimentom je što je u ovom slučaju za fotografiju za učenje i validaciju korištena ista fotografija s dva odvojena podskupa (Slika \ref{fig:large_sp_train_val_illustration}, a kao testna slika fotografija kamermana (Fotografija \ref{fig:sp_samples_camerman}
 
 \begin{figure}
 	\centering
@@ -195,8 +205,8 @@ Razlika s prošlim eksperimentom je što sam u ovom slučaju za trening i valida
 \end{figure}
 
 Rezultati su prikazani na slikama \ref{fig:large_sp_result_grid}, dok je kretanje $L1$ pogreške vidljivo na grafu \ref{graph:large_sp_train_val_loss}.
-Očekivano testna slika pokazuje nešto lošije performanse u usporedbi s trening, odnosno, validacijskom slikom, no pokazuje poboljšanja u odnosu na početnu sliku.
-Također, znaimljivo je što višestruko pokretanje micanja šuma na istoj fotografiji ne proizvodi bolje ili nešto drukčije fotografije nakon prvog prolaska kroz cijelu sliku.
+Očekivano testna slika pokazuje nešto lošije performanse u usporedbi sa slikom za učenje, odnosno, validacijskom slikom, no pokazuje poboljšanja u odnosu na početnu sliku.
+Također, zanimljivo je što višestruko pokretanje micanja šuma na istoj fotografiji ne proizvodi bolje ili nešto drukčije fotografije nakon prvog prolaska kroz cijelu sliku.
 
 \begin{figure}
 	\centering
@@ -223,6 +233,6 @@ Također, znaimljivo je što višestruko pokretanje micanja šuma na istoj fotog
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\linewidth]{Experiments/LargeGrainRemoval/lgr_errs.png}
-	\caption{Kretanje trening i validacijske $L1$ pogreške kroz iteracije algoritma}
+	\caption{Kretanje $L1$ pogreške na skupovima za učenje i validaciju kroz iteracije algoritma}
 	\label{graph:large_sp_train_val_loss}
 \end{figure}

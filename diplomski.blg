@@ -5,56 +5,51 @@ The style file: fer.bst
 Database file #1: literatura.bib
 Warning--entry type for "conv_pres" isn't style-file defined
 --line 199 of file literatura.bib
-Warning--entry type for "conv_wiki" isn't style-file defined
---line 206 of file literatura.bib
-Warning--to sort, need author or key in conv_wiki
-Warning--empty year in conv_wiki
 Warning--empty publisher in cgp_image_processing
 Warning--empty journal in jakobovic
-Warning--empty year in conv_pres
 Warning--empty publisher in cgp
 Warning--empty publisher in conv_gp
 Warning--empty booktitle in ga_stopping_criteria
 Warning--can't use both author and editor fields in Sekanina2011
-You've used 19 entries,
+You've used 18 entries,
             2773 wiz_defined-function locations,
-            737 strings with 8825 characters,
-and the built_in function-call counts, 9978 in all, are:
-= -- 914
+            734 strings with 8734 characters,
+and the built_in function-call counts, 9739 in all, are:
+= -- 892
 > -- 518
 < -- 20
-+ -- 176
++ -- 175
 - -- 156
-* -- 798
-:= -- 1472
-add.period$ -- 83
-call.type$ -- 19
-change.case$ -- 101
-chr.to.int$ -- 18
-cite$ -- 48
-duplicate$ -- 467
-empty$ -- 814
+* -- 782
+:= -- 1454
+add.period$ -- 81
+call.type$ -- 18
+change.case$ -- 98
+chr.to.int$ -- 17
+cite$ -- 42
+duplicate$ -- 452
+empty$ -- 779
 format.name$ -- 184
-if$ -- 2176
+if$ -- 2118
 int.to.chr$ -- 2
 int.to.str$ -- 1
 missing$ -- 21
-newline$ -- 127
+newline$ -- 123
 num.names$ -- 76
-pop$ -- 238
+pop$ -- 223
 preamble$ -- 1
-purify$ -- 87
+purify$ -- 85
 quote$ -- 0
-skip$ -- 373
+skip$ -- 359
 stack$ -- 0
-substring$ -- 395
-swap$ -- 111
+substring$ -- 392
+swap$ -- 110
 text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 184
-warning$ -- 9
+type$ -- 173
+warning$ -- 6
 while$ -- 81
 width$ -- 0
-write$ -- 297
-(There were 11 warnings)
+write$ -- 289
+(There were 7 warnings)

@@ -1,5 +1,4 @@
-Algoritmi strojnog učenja ovise o dostupnim podacima.
-Ne samo o broju već i kvaliteti.
+Algoritmi strojnog učenja ovise o dostupnim podacima, ne samo o broju već i kvaliteti.
 Metode nadziranog učenja (\emph{eng. Supervised learning}) uz same podatke moraju na raspolaganju imati i oznaku (\emph{eng. Label}) koja definira točno što je svaki podatak prema čemu se uspoređuju i sami izlazi modela.
 U puno slučajeva oznake se unose ručno što je dugotrajan i težak proces podložan greškama.
 Nenadzirano učenje (\emph{eng. Unsupervised learning}) je privlačno zbog mogućnosti pronalaska i učenja distribucije danih podataka bez potrebe oznaka (\cite{ev_var_ae}).
@@ -7,16 +6,16 @@ Nenadzirano učenje (\emph{eng. Unsupervised learning}) je privlačno zbog mogu�
 Generativni modeli osim rješavanja danog problema, tijekom tog procesa \emph{uče} o samim podacima.
 Pretpostavka je da podaci nisu u potpunosti nasumični već da dolaze u određenoj distribuciji.
 Model se toj distribuciji prilagođava te ima sposobnost generiranja sintetičkih podataka koji joj odgovaraju.
-Ovo poglavlje i rad fokusirati će se na model \texttt{Autoenkodera}. \\
+Ovo poglavlje i rad fokusirati će se na model \texttt{autoenkodera}. \\
 U nastavku se nalazi detaljnije opisan rad modela, implementacija, rezultati implementacije i poteškoće koje se javljaju.
 
 \section{Autoenkoder}
 Autoenkoder je generativni model učen nenadzirano.
 Interesantan dio je "skriveni" sloj, najčešće manje dimenzije nego ulazni vektor, iz kojeg dekoder stvara izlaz.
-Skriveni sloj kompaktno sadrži podatke potrebne za uspješnu rekonstrukciju.
+Skriveni sloj sadrži podatke potrebne za uspješnu rekonstrukciju.
 Nenadzirano učenje vrši se direktnom usporedbom ulaza i dobivenog konačnog izlaza.
 Želja je što vjernije reproducirati ulazne vektore, naravno, uz izbjegavanje direktnog kopiranja.
-Direktno kopiranje izbjegava se automatski korištenjem skrivenog sloja
+Direktno kopiranje izbjegava se automatski korištenjem međusloja manje dimenzije prisiljavajući na taj način model da uči iz značajki.
 
 \subsection{Arhitektura}
 
@@ -55,12 +54,12 @@ S tim na umu, autoenkoder se čini kao moguć zadatak za riješiti.
 \end{figure}
 
 Slika \ref{fig:cgpae} prikazuje shematiku predložene arhitekture.
-Koriste se dva neovisna CGP-a spojena serijski.
+Koriste se dva neovisna CGP-a spojena serijski na način da drugi CGP izravno čita izlaz prvog.
 Prvi CGP, enkoder, za izlaz stvara vektor veličine po izboru koji sadrži značajke iz ulaza.
 Nastavlja se na drugi CGP, dekoder, koji iz vektora značajki stvara izlaz jednakih dimenzija kao ulaz u enkoder.
 Njegov izlaz treba biti što sličniji ili isti ulazu u enkoder.
 
-\subsection{Algoritam}
+\subsection{Algoritam učenja}
 Istovremeno učenje dva odvojena CGP-a predstavlja velik izazov zbog velikog broja parametara koji mogu poprimiti veliku količinu vrijednosti.
 Korištenje dva CGP-a može se izbjeći korištenjem jednog s postavljenim $l = 1$.
 Ograničenje koje time nastaje je ne-fleksibilnost parametra i postavljanje latentnog vektora značajki na dimenziju jednaku ulazu.
