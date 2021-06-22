@@ -1,13 +1,13 @@
 \section{Genetsko programiranje}
 \emph{Genetsko programiranje} (\emph{GP}) evolucijski je algoritam koji do rješenja dolazi iterativno mjenjajući populaciju sve dok uvjet zaustavljanja nije zadovoljen (\cite{conv_gen_programming}).
 
-Inspiraciju vuče iz prirode.
 Algoritam počinje s nasumično nastalom populacijom koja se poboljšava kroz ograničen broj generacija.
 Nastanak svake generacije započinje izborom jedinki (detaljno opisane u nastavku).
-Izbor nije nasumičan niti determinističan, boljim jedinkama daje se prednost pri izboru no i one lošije mogu biti izabrane.
+Izbor nije nasumičan niti determinističan.
+Boljim jedinkama daje se prednost pri izboru no i one lošije mogu biti izabrane.
 Nedeterminističnost izbora rezultira širem pretraživanju prostora rješenja, ne ograničenim samo na najbolje jedinke.
-Iz jedinki nastaju nove kao rezultat genetskih operatora \emph{Križanja} i \emph{Mutacije}.
-Ciklus se ponavlja sve dok jedna od dvije stvari nije zadovoljena:
+Iz jedinki nastaju nove kao rezultat genetskih operatora \emph{križanja} i \emph{mutacije}.
+Ciklus se ponavlja sve dok nije:
 \begin{itemize}
 	\item{Dosegnut najveći broj iteracija ili evaluacija}
 	\item{Postignuta željena preciznost rješenja (npr. $greska \leq 10^{-3}$})
@@ -34,7 +34,7 @@ Jednostavan primjer genetskog algoritma vidljiv je u pseudokodu ~\ref{alg:gp_exa
 \end{algorithm}
 
 \subsection{Jedinka populacije}
-Jedinka populacije u genetskom algoritmu predstavlja jedno moguće rješenje na problem koji smo postavili.
+Jedinka populacije u genetskom algoritmu predstavlja jedno moguće rješenje na postavljeni problem.
 Svaka jedinka definirana je s dvije stavke:
 \begin{itemize}
 	\item{Genotipom}
@@ -48,9 +48,9 @@ Genotipom možemo smatrati ono što koristi algoritam kako bi stvorio fenotip, d
 Ukoliko je zadatak GA iz skupa točaka provesti simboličku regresiju $A\sin(Bx + C)$ gdje su $A$, $B$ i $C$ nepoznate varijable, genotip bi se mogao prikazati kao vektor s broja s pomičnim zarezom.
 Dalje, pravilo mapiranja genotipa u fenotip bi moglo biti da element na prvom mjestu odgovara vrijednosti koju pridajemo varijabli $A$ i tako dalje za varijable $B$ i $C$ (~\ref{fig:genotype_phenotype_map}).
 Također, bitno je kvantificirati kvalitetu jedinke.
-Ta mjera najčešće se naziva kondicija (\emph{eng. fitness}).
-Sve jedinke populacije dobivaju kondiciju na temelju istog pravila kako bi bili međusobno usporedivi.
-Jedinka s najvećom kondicijom smatra se najkvalitetnijom i najboljim rješenjem na problem koji se rješava.
+Ta mjera najčešće se naziva \emph{dobrota} (\emph{eng. fitness}).
+Sve jedinke populacije dobivaju dobrotu na temelju istog pravila kako bi bili međusobno usporedivi.
+Jedinka s najvećom dobrotom smatra se najkvalitetnijom i najboljim rješenjem na problem koji se rješava.
 
 \begin{figure}
 	\caption{Mogućnosti spremanja i korištenja genotipa tijekom izvođenja genetskog algoritma}
@@ -76,7 +76,7 @@ Jedinka s najvećom kondicijom smatra se najkvalitetnijom i najboljim rješenjem
 \subsection{Genetski operatori}
 Genetski operatori pružaju osnovni mehanizam pretrage genetskog algoritma.
 Za zadatak imaju stvarati nova rješenja uz efektivnu pretragu prostora rješenja.
-Izvode se na primitivu jedinki, genotipu te se nerjetko međusobno izvode u kombinaciji jer samostalno nisu uvijek efektivni.
+Izvode se na genotipu te se nerjetko međusobno izvode u kombinaciji jer samostalno nisu uvijek efektivni.
 U nastavku su opisane dvije osnovne vrste genetskih operatora, križanje i mutacija.
 
 \subsubsection{Križanje}
@@ -178,7 +178,7 @@ Graf ~\ref{fig:elitism} prikazuje utjecaj elitizma pri optimizaciji strategije u
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{SourcedGraphs/elitism_comparison.png}
-	\caption{Usporedba izvođenja genetskog algoritma sa i bez elitizma pri rješavanju optimizacijskog problema}
+	\caption{Usporedba izvođenja genetskog algoritma sa i bez elitizma pri rješavanju optimizacijskog problema.}
 	\label{fig:elitism}
 \end{figure}
 
@@ -205,29 +205,29 @@ Znači li spomenuto da je dostizanje željene preciznosti najbolje mjerilo kvali
 U kontekstu \emph{strojnog učenja}, čemu pripada i genetsko programiranje, često se spominju različiti skupovi podataka. \\
 Razlikujemo tri skupa (~\cite{datasets}):
 
-\paragraph{Skup za trening}
+\paragraph{Skup za učenje}
 podaci su na temelju kojih se model \emph{uči} uspoređujući svoje izlaze sa željenim iz skupa.
 
 \paragraph{Skup za validaciju} 
 objektivniji je skup podataka na kojima se model nikad ne uči.
-S obzirom na svojstvo učenja da će pokušati najbolje preslikati ulaze na izlaze što sličnije željenim iz skupa za trening lako može doći do \emph{pretreniranja}.
+S obzirom na svojstvo učenja da će pokušati najbolje preslikati ulaze na izlaze što sličnije željenim iz skupa za učenje lako može doći do \emph{prenaučenosti}.
 S tim na umu, validacijski skup objektivnije je mjerilo kvalitete modela.
 
 \paragraph{Testni skup}
 podaci su koji se prezentiraju konačnom modelu.
-Odvajaju se od cjelokupnog skupa podataka na samom početku eksperimenta te su rezervirani za konačne modele koji se žele dalje ispitati.
+Odvajaju se od cjelokupnog skupa podataka na samom početku eksperimenta te su rezervirani za konačne modele koji se žele ispitati.
 Imitiraju podatke i situacije iz stvarnog svijeta jer kako su podaci odvojeni na samom početku, model ih nikad nije vidio.
-Slično validacijskom skupu s razlikom da se u niti jednoj točki postupka treniranja podaci iz testnog skupa ne prikažu modelu. \\
+Slično validacijskom skupu s razlikom da se u niti jednoj točki postupka učenja podaci iz testnog skupa ne prikazuju modelu. \\
 
-Spomenuti skupovi nadovezuju se na svojstvo algoritma da će tijekom vremena samo preciznije svoje izlaze približavati onima na kojima se trenira dosežući pritom fazu pretreniranja.
+Spomenuti skupovi nadovezuju se na svojstvo algoritma da će tijekom vremena samo preciznije svoje izlaze približavati onima na kojima se uči dosežući pritom fazu prenaučenosti.
 Graf ~\ref{fig:train_test_loss} prikazuje ovisnost odstupanja na različitim skupovima podataka te optimalnu točku s najboljim objektivnim modelom.
 Područje lijevo od označenog trenutka jest vrijeme tijekom kojeg je model uz stalno učenje bio objektivan. 
-Desno od trenutka je nastupilo pretreniranje.
-Model sve bolje preslikava ulaze onima iz skupa za trening, no sve ostalo postaje nepreciznije.
-Graf ~\ref{fig:overfitting} Prikazuje rad objektivnog i pretreniranog modela.
+Desno od trenutka je nastupila prenaučenost.
+Model sve bolje preslikava ulaze onima iz skupa za učenje, no sve ostalo postaje nepreciznije.
+Graf ~\ref{fig:overfitting} Prikazuje rad objektivnog i prenaučenog modela.
 
 \begin{figure}
-	\caption{Grafički prikaz odstupanja kroz iteracije na trening i validacijskom skupu podataka te prikaz rada pretreniranog modela}
+	\caption{Grafički prikaz odstupanja kroz iteracije na skupu za učenje i validacijskom skupu te prikaz rada prenaučenog modela}
 	\begin{subfigure}[t]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{Illustrations/train_test_loss.png}
 		\caption{Odstupanje na različitim skupovima podataka kroz iteracije}
@@ -236,7 +236,7 @@ Graf ~\ref{fig:overfitting} Prikazuje rad objektivnog i pretreniranog modela.
 	\hspace{\fill}
 	\begin{subfigure}[t]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{Illustrations/overtraining.png}
-		\caption{Rad objektivnog i pretreniranog modela}
+		\caption{Rad objektivnog i prenaučenog modela}
 		\label{fig:overfitting}
 	\end{subfigure}
 \end{figure}
