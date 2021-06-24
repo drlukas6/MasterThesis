@@ -189,6 +189,31 @@ Također, prikazana $L1$ pogreška je prilikom izračuna dodatno podjeljena s $2
 	\label{fig:sp_train_val_graph}
 \end{figure}
 
+Zanimljivo je pogledati korisnost pojedinih funkcija vidljivu u tablici \ref{table:sp_function_quality}.
+Prvi stupac prikazuje funkciju privremeno izbačenu iz skupa, dok drugi stupac prikazuje utjecaj nedostatka te funkcije na rezultat.
+Svako mjerenje izvršeno je 10 puta te je uzet medijan kao vrijednost koja se koristi u izračunu.
+Vidljivo je da izbacivanje funkcija $min$ ili $max$ poboljšava ponašanje eksperimenta, ukazujući na to da nisu bitne ili štete, dok funkcija $mean$ uvelike doprinosi algoritmu.
+
+\begin{table}
+	\centering
+	\begin{tabular}{||c c||}
+		\hline
+		Izbačena funkcija & Odnos na pogrešku (manje je bolje)\\ [0.5ex]
+		\hline \hline
+		$max$ & $0.9103$\\ 
+		$min$ & $0.9315$\\ 
+		$max - min$ & $0.9356$\\ 
+		$sum mod 256$ & $0.9857$\\ 
+		$\bm{osnova}$ & $\bm{1.0}$\\ 
+		$avg$ & $1.0934$\\ 
+		$\sqrt{sum}$ & $1.2075$\\ 
+		$mean$ & $1.3499$\\ [1ex]
+		\hline
+	\end{tabular}
+	\caption{Funkcije korištene u postupku micanja šuma sa slike}
+	\label{table:sp_function_quality}
+\end{table}
+
 \subsubsection{Rad s većim postocima}
 Definirani CGP nije pokazao dobre rezultate u micanju šuma sa slike $40\%$ prekrivene šumom.
 CGP koji se pokazao korisnim koristio je arhitekturu $2 \times 20$ s parametrom $L = 2$.
