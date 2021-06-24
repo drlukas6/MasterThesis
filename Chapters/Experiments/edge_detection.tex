@@ -147,3 +147,33 @@ Daljni koraci vrlo brzo konvergiraju točnijim rješenjima.
 	\includegraphics[width=0.6\linewidth]{Experiments/EdgeDetection/edge_detection_graph.png}
 	\label{fig:edge_detection_graph}
 \end{figure}
+
+Tablica \ref{table:edge_detection_function_quality} prikazuje korisnost pojedinih funkcija.
+Kao i u slučaju micanja šuma, svako mjerenje izvršeno je 10 puta te je uzet medijan kao vrijednost za izračun.
+Vidljivo je da u ovom slučaju funkcije $step$, $sin$, $cos$ i $min$ ne doprinose radu algoritma, dok su se na primjer $ln$ i $avg$ pokazali važnim.
+Zanimljiva je i usporedba funkcija $max$ i $min$ gdje je jedna doprinjela, a druga odmogla radu algoritma.
+
+\begin{table}
+	\centering
+	\begin{tabular}{||c c||}
+		\hline
+		Izbačena funkcija & Utjecaj na pogrešku (manje je bolje)\\ [0.5ex]
+		\hline \hline
+		$step$ & $0.9065$\\
+		$sin$ & $0.9100$\\
+		$cos$ & $0.9685$\\
+		$min$ & $0.9971$\\
+		$\bm{osnova}$ & $\bm{1.0}$\\
+		$x + y$ & $1.0063$\\
+		$x \dot y$ & $1.0619$\\
+		$x - y$ & $1.0711$\\
+		$\frac{x}{y}$ & $1.2017$\\
+		$max$ & $1.3360$\\
+		$\sqrt{x}$ & $1.5425$\\
+		$ln(x)$ & $1.5605$\\
+		$avg$ & $1.5821$\\ [1ex]
+		\hline
+	\end{tabular}
+	\caption{Analiza doprinosa pojedinih funkcija pri detekciji rubova. Osnovno mjerenje dozvoljava sve funkcije iz skupa.}
+	\label{table:edge_detection_function_quality}
+\end{table}

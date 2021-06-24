@@ -122,12 +122,12 @@ Korišteni parametri su sljedeći:
 		\subitem {$n_c, n_r = 10, 6$}
 		\subitem {$n_i, n_o = 9,4$}
 		\subitem {$l = 2$}
-		\subitem{$n_{func} = 20$ (Broj raspoloživih funkcija) } 
+		\subitem{$n_{func} = 20$ (Broj raspoloživih funkcija iz tablice \ref{table:edge_detection_function_set}) } 
 	\item {Dekoder}
 		\subitem {$n_c, n_r = 10, 9$}
 		\subitem {$n_i, n_o = 4,9$}
 		\subitem {$l = 2$}
-		\subitem{$n_{func} = 20$}
+		\subitem{$n_{func} = 20$ (Funkcije iz tablice \ref{table:edge_detection_function_set}) }
 \end{itemize}
 Ideja je bila početi s jednostavnim skupom podataka (npr. kao na slici \ref{fig:ae_example}) te prelaziti na postupno složenije skupove podataka također korištene u \cite{why_ae_diff}.
 No, neuspjeh na jednostavnom skupu podataka doveo je do zaključka da bi složeniji skupovi podataka predstavljali još veći problem.
@@ -135,6 +135,7 @@ Uz iste parametre također isproban je jednak skup podataka, no s ulaznim velič
 CGPAE u tom slučaju lako pronalazi rješenje.
 Graf \ref{fig:ae_boxplot} prikazuje ovisnost broja značajki očitanih od enkodera i ukupne pogreške.
 Zanimljivo je primijetiti kako broj značajki ne utječe puno na medijan, no najmanji broj, u ovom slučaju $|f| = 2$ ima najmanju vrijednost za odskakajuću pogrešku.
+Također, budući rad mogao bi se usmjeriti na korištenje složenije funkcije gubitka ili korištenja različitih funkcija pri učenju enkodera i dekodera.
 
 \begin{figure}[H]
 	\centering
